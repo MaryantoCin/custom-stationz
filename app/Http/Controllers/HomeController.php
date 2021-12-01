@@ -27,4 +27,10 @@ class HomeController extends Controller
         $mice = Mouse::all();
         return view('home', ['mice' => $mice]);
     }
+
+    public function detail($id)
+    {
+        $mice = Mouse::find($id);
+        return view('detail', ['mice' => $mice]);
+    }
 }
