@@ -19,7 +19,7 @@ class CreateMiceTable extends Migration
             $table->string('merk');
             $table->string('color');
             $table->integer('price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('stock');
             $table->longText('description');
             $table->timestamps();
