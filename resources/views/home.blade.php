@@ -26,7 +26,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $mouse->name }}</h5>
                                             <p class="card-text">{{ $mouse->description }}</p>
-                                            <a href="detail/{{$mouse->id}}" class="btn btn-primary">View</a>
+                                            <a href="detail/{{ $mouse->id }}" class="btn btn-primary">View</a>
                                         </div>
                                     </div>
                                 </div>
