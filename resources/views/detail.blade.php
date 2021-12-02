@@ -23,7 +23,7 @@
                             <div class="container-fluid">
                                 <div class="col-sm">
                                     <h1 class="mb-3">{{ $mice->name }}</h1>
-                                    <h2 class="mb-4">Rp.{{ number_format($mice->price, 2, ',', '.') }}</h2>
+                                    <h2 class="mb-2">Rp.{{ number_format($mice->price, 2, ',', '.') }}</h2>
                                     <table class="mb-4">
 
                                     </table>
