@@ -1,3 +1,42 @@
 td{
     padding-right: 3rem;
 }
+section{
+    height: 100%;
+}
+.floating-text{
+    position: absolute;
+    left: 50%;
+    background-color: white;
+    padding: 0 1rem;
+    top: -.5rem;
+}
+.black-button{
+    background-color: black;
+    border-radius: 6px;
+    border: none;
+    padding: .75rem;
+}
+.circle{
+    background-color: black;
+    width: 1200px;
+    height: 1200px;    
+    border-radius: 100%;
+    box-shadow: 1rem 1rem 2rem gray;
+}
+.end-25{
+    right: 5%;
+}
+.bottom-5{
+    bottom: 0px;
+}
+.top-40{
+    top: 40%;
+}
+.logo{
+    width: 300px;
+}
+.display-none{
+    background: none;
+    border:none;
+}
