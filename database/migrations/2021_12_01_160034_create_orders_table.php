@@ -17,8 +17,14 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('order_date');
-            $table->integer('grand_total');
+            $table->unsignedBigInteger('discount_id');
+            $table->foreign('discount_id')->references('id')->on('discounts');
+            $table->unsignedBigInteger('address_id');
+            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->unsignedBigInteger('delivery_id');
+            $table->foreign('delivery_id')->references('id')->on('deliveries');
+            $table->string('delivery_receipt');
+            $table->enum('status', ['progressed', 'confirmed', 'waiting', 'delivered', 'completed', 'cancelled'])->default('progressed');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomPackagesTable extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCustomPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('custom_packages', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('price');
-            $table->string('image');
+            $table->string('logo')->nullable();
+            $table->string('number');
+            $table->string('owner');
+            $table->enum('type', ['manual', 'virtual']);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateCustomPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('custom_packages');
+        Schema::dropIfExists('payment_methods');
     }
 }

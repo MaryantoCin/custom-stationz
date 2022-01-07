@@ -15,10 +15,9 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->string('delivery_status');
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->integer('delivery_price');
+            $table->string('name');
+            $table->integer('price');
+            $table->string('type');
             $table->timestamps();
         });
     }
