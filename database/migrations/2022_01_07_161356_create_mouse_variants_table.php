@@ -16,7 +16,7 @@ class CreateMouseVariantsTable extends Migration
         Schema::create('mouse_variants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mouse_id');
-            $table->foreign('mouse_id')->references('id')->on('mice');
+            $table->foreign('mouse_id')->references('id')->on('mice')->onDelete('cascade');
             $table->integer('stock');
             $table->string('color');
             $table->integer('price');

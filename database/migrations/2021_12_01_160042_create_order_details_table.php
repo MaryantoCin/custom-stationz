@@ -16,9 +16,9 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->unsignedBigInteger('mouse_id');
-            $table->foreign('mouse_id')->references('id')->on('mice');
+            $table->foreign('mouse_id')->references('id')->on('mice')->onDelete('cascade');
             $table->integer('quantity');
             $table->string('spray_color')->nullable();
             $table->string('painted_logo')->nullable();
