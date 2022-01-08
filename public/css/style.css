@@ -2,7 +2,7 @@ td{
     padding-right: 3rem;
 }
 section{
-    height: 100%;
+    min-height: 100vh;
 }
 .floating-text{
     position: absolute;
@@ -24,6 +24,12 @@ section{
     border-radius: 100%;
     box-shadow: 1rem 1rem 2rem gray;
 }
+.card-circle{
+    border: solid 1px lightgray;
+    width: 32px;
+    height: 32px;    
+    border-radius: 100%;
+}
 .end-25{
     right: 5%;
 }
@@ -33,10 +39,35 @@ section{
 .top-40{
     top: 40%;
 }
+.w-25{
+    width: 25%;
+}
+img{
+    width: 500px;
+}
+.product-img{
+    width: 250px;;
+}
+.thick-hr{
+    opacity: 1;
+    border-top: solid 10px black;
+}
 .logo{
     width: 300px;
 }
 .display-none{
     background: none;
     border:none;
+}
+.navbar-logo{
+    width: 100px;
+}
+.navbar-icon{
+    width: 24px;
+}
+.white-text{
+    color: white;
+}
+.logo-24{
+    width: 24px;
 }
