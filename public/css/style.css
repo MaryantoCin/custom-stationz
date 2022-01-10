@@ -48,6 +48,14 @@ img{
 .product-img{
     width: 250px;;
 }
+.payment-img{
+    width: 75px;
+}
+
+.checkout-img{
+    height: 150px;
+    width: auto;
+}
 .thick-hr{
     opacity: 1;
     border-top: solid 10px black;
@@ -64,10 +72,20 @@ img{
 }
 .navbar-icon{
     width: 24px;
+    height: auto;
+}
+.icon-16{
+    width: 16px;
 }
 .white-text{
     color: white;
 }
 .logo-24{
     width: 24px;
+}
+.address-card{
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    border-left: 10px solid black;
+    box-shadow: 2px 2px 4px lightgray;
 }
