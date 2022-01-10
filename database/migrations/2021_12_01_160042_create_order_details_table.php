@@ -17,8 +17,8 @@ class CreateOrderDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->unsignedBigInteger('mouse_id');
-            $table->foreign('mouse_id')->references('id')->on('mice')->onDelete('cascade');
+            $table->unsignedBigInteger('mouse_variant_id');
+            $table->foreign('mouse_variant_id')->references('id')->on('mouse_variants')->onDelete('cascade');
             $table->integer('quantity');
             $table->string('spray_color')->nullable();
             $table->string('painted_logo')->nullable();

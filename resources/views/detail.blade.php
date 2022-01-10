@@ -7,7 +7,7 @@
                 <div class="card">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb pt-4 px-5">
-                            <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Detail</li>
                         </ol>
                     </nav>
@@ -17,49 +17,50 @@
 
                             <div class="col-sm-4">
                                 <div class="card" style="width: 25rem;">
-                                    <img class="card-img-top" src="{{ $mice->image }}" alt="Card image cap">
+                                    <img class="card-img-top" src="{{ $detail->mouse->image }}" alt="Card image cap">
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="col-sm">
-                                    <h1 class="mb-3">{{ $mice->name }}</h1>
-                                    <h2 class="mb-2">Rp.{{ number_format($mice->price, 2, ',', '.') }}</h2>
+                                    <h1 class="mb-3">{{ $detail->mouse->name }}</h1>
+                                    <h2 class="mb-2">Rp.{{ number_format($detail->price, 2, ',', '.') }}</h2>
                                     <table class="mb-4">
 
                                     </table>
                                     <div class="d-inline-block">
-                                        <button type=button class="btn btn-secondary mb-5">Buy</button>
-                                        <button type=button class="btn btn-primary mb-5">Add to cart</button>
+                                        <button type=button class="btn btn-primary mb-5">Customize it</button>
                                     </div>
 
                                     <table>
-                                        {{-- <tr>
-                                            <td><b>Warna</b></td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="button" class="btn btn-secondary">Merah</button>
-                                                <button type="button" class="btn btn-secondary">Kuning</button>
-                                                <button type="button" class="btn btn-secondary">Hijau</button>
-                                              </div>
-                                            </td>
-                                        </tr> --}}
                                         <tr>
                                             <td><b>Merk</b></td>
-                                            <td>{{ $mice->merk }}</td>
+                                            <td>{{ $detail->mouse->brand }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Color</b></td>
-                                            <td>{{ $mice->color }}</td>
+                                            <td>{{ $detail->color }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Stock</b></td>
-                                            <td>{{ $mice->stock }}</td>
+                                            <td>{{ $detail->stock }}</td>
                                         </tr>
                                         <tr>
                                             <td class="align-top"><b>Description</b></td>
-                                            <td>{{ $mice->description }}</td>
+                                            <td>{{ $detail->mouse->description }}</td>
                                         </tr>
                                     </table>
+                                    @if ($errors->any())
+                                        @foreach ($errors->all() as $error)
+                                            <div>{{ $error }}</div>
+                                        @endforeach
+                                    @endif
+                                    <form action="{{ route('add_to_cart') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="spray_color" placeholder="spray_color">
+                                        <input type="file" name="painted_logo">
+                                        <input type="hidden" name="mouse_variant_id" value="{{ $detail->id }}">
+                                        <button type="submit">Add to cart</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

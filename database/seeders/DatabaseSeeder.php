@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(MouseSeeder::class);
         $this->call(MouseVariantSeeder::class);
+        $this->call(DeliverySeeder::class);
+        $this->call(PaymentMethodSeeder::class);
+        $this->call(DiscountSeeder::class);
     }
 }

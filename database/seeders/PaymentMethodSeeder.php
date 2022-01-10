@@ -25,6 +25,6 @@ class PaymentMethodSeeder extends Seeder
             ['name' => 'BNI', 'number' => '5271734744', 'owner' => 'Custom Stationz', 'type' => 'virtual'],
         ];
 
-        DB::table('mouse_variants')->insert($data);
+        DB::table('payment_methods')->insert($data);
     }
 }

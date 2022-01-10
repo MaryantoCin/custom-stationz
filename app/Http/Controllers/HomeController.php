@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Delivery;
+use App\Models\Discount;
 use App\Models\Mouse;
+use App\Models\MouseVariant;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use App\Rules\CurrentPassword;
 use Carbon\Carbon;
@@ -14,21 +20,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $mice = Mouse::all();
@@ -37,8 +33,169 @@ class HomeController extends Controller
 
     public function detail($id)
     {
-        $mice = Mouse::find($id);
-        return view('detail', ['mice' => $mice]);
+        $detail = MouseVariant::find($id);
+        return view('detail', ['detail' => $detail]);
+    }
+
+    public function add_to_cart(Request $request)
+    {
+        $request->validate([
+            'mouse_variant_id' => ['required'],
+            'spray_color' => ['string', 'nullable'],
+            'painted_logo' => ['image', 'max:1024'],
+        ]);
+
+        $file = $request->file('painted_logo');
+        $filename = null;
+        if ($file) {
+            $filename = time() . "_" . $file->getClientOriginalName();
+            $file->storeAs('public', $filename);
+        }
+
+        $user = Auth::user();
+
+        $cart = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'cart'],
+        ])->first();
+
+        if ($cart == null) {
+            $cart = Order::create([
+                'user_id' => $user->id,
+            ]);
+        }
+
+        OrderDetail::create([
+            'order_id' => $cart->id,
+            'mouse_variant_id' => $request->mouse_variant_id,
+            'quantity' => 1,
+            'spray_color' => $request->spray_color,
+            'painted_logo' => $filename,
+        ]);
+
+        return Redirect::route('view_cart');
+    }
+
+    public function view_cart()
+    {
+        $user = Auth::user();
+
+        $cart = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'cart'],
+        ])->first();
+
+        return view('cart', ['cart' => $cart]);
+    }
+
+    public function increase_quantity(OrderDetail $order_detail)
+    {
+        $order_detail->update([
+            'quantity' => $order_detail->quantity + 1,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function decrease_quantity(OrderDetail $order_detail)
+    {
+        $order_detail->update([
+            'quantity' => $order_detail->quantity - 1,
+        ]);
+
+        if ($order_detail->quantity == 0) {
+            OrderDetail::destroy($order_detail->id);
+        }
+
+        return Redirect::back();
+    }
+
+    public function start_checkout()
+    {
+        $user = Auth::user();
+
+        $cart = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'cart'],
+        ])->first();
+
+        $cart->update([
+            'status' => 'waiting',
+        ]);
+
+        return Redirect::route('view_checkout');
+    }
+
+    public function view_checkout()
+    {
+        $user = Auth::user();
+
+        $cart = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'waiting'],
+        ])->first();
+
+        $addresses = Address::where([
+            ['user_id', '=', $user->id],
+        ])->get();
+
+        $deliveries = Delivery::all();
+        $payment_methods = PaymentMethod::all();
+
+        return view('checkout', ['cart' => $cart, 'addresses' => $addresses, 'deliveries' => $deliveries, 'payment_methods' => $payment_methods]);
+    }
+
+    public function update_checkout(Request $request, Order $order)
+    {
+        $address = $request->address;
+        $payment = $request->payment;
+        $delivery = $request->delivery;
+        $promo = $request->promo;
+
+        if ($address != null) {
+            $order->update([
+                'address_id' => $address,
+            ]);
+        }
+        if ($payment != null) {
+            $order->update([
+                'payment_method_id' => $payment,
+            ]);
+        }
+        if ($delivery != null) {
+            $order->update([
+                'delivery_id' => $delivery,
+            ]);
+        }
+        if ($promo != null) {
+            $discount = Discount::where([
+                'code' => $promo,
+            ])->first();
+            if ($discount == null) {
+                return Redirect::back();
+            }
+            $order->update([
+                'discount_id' => $discount->id,
+            ]);
+        }
+
+        return Redirect::back();
+    }
+
+    public function finish_checkout()
+    {
+        $user = Auth::user();
+
+        $cart = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'waiting'],
+        ])->first();
+
+        $cart->update([
+            'status' => 'progressed',
+        ]);
+
+        return view('finish_checkout', ['cart' => $cart]);
     }
 
     public function view_profile()

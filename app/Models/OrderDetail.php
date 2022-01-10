@@ -16,8 +16,8 @@ class OrderDetail extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function mouse()
+    public function mouse_variant()
     {
-        return $this->belongsTo(Mouse::class);
+        return $this->belongsTo(MouseVariant::class);
     }
 }

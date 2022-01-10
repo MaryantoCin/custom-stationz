@@ -26,7 +26,16 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $mouse->name }}</h5>
                                             <p class="card-text">{{ $mouse->description }}</p>
-                                            <a href="detail/{{ $mouse->id }}" class="btn btn-primary">View</a>
+                                            <p class="card-text">
+                                                Rp.{{ number_format($mouse->mouse_variants->first()->price, 2, ',', '.') }}
+                                            </p>
+                                            <p class="card-text">
+                                                @foreach ($mouse->mouse_variants as $mouse)
+                                                    <a href="{{ route('view_mouse_detail', $mouse->id) }}"
+                                                        class="btn btn-primary">{{ $mouse->color }}</a>
+                                                @endforeach
+                                            </p>
+
                                         </div>
                                     </div>
                                 </div>
