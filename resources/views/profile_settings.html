@@ -58,7 +58,7 @@
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">Payment Confirmation</a>
+                      <a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#paymentConfirmation">Payment Confirmation</a>
                     </li>
                     <li class="nav-item">
                     </li>
@@ -118,6 +118,108 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="thankYou" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thank You for Your Payment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              Please wait a moment.<br>
+              We will verify your payment maximum 1x24 hours.<br><br>
+              If your payment have already been verified, The status of your order will be automatically change to<br>
+              <div class="d-flex justify-content-center mt-2">
+                  <h5><span class="badge bg-warning">In Progress</span></h5>
+                  <h5><span class="badge bg-secondary ms-2">Process</span></h5>
+              </div>
+
+            </div>
+            <div class="modal-footer w-100 m-auto">
+                <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Buy Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="paymentConfirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Payment Confirmation</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="text-center">
+                        Thanks for shopping at CUSTOM STATIONZ!<br> When you have made a payment
+                        by <b>BANK TRANSFER,</b> confirm your payment here so we can process it immediately.
+                    </div>
+                </div>
+                <div class="container p-5">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="orderID" class="form-label">Order ID</label>
+                            <input type="text" class="form-control" id="orderID" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="bankName" class="form-label">Your Bank Name</label>
+                            <select class="form-control" id="bankName" required>
+                                <option value="1" selected>BCA</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col mb-3">
+                            <label for="destinationBank" class="form-label">Destination Bank</label>
+                            <select class="form-control" id="destinationBank" required>
+                                <option value="1" selected>BCA</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="accountNumber" class="form-label">Account's Number</label>
+                            <input type="text" class="form-control" id="accountNumber" placeholder="" required>
+                        </div>
+                        <div class="col mb-3">
+                            <label for="accountName" class="form-label">Account's Name</label>
+                            <input type="text" class="form-control" id="accountName" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="transferAmount" class="form-label">Transfer Amount</label>
+                            <input type="number" class="form-control" id="transferAmount" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="transferDate" class="form-label">Transfer Date</label>
+                            <input type="date" class="form-control" id="transferDate" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="evidence" class="form-label">Evidence of Transfer</label>
+                            <input type="file" class="form-control" id="evidence" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-dark btn-lg" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#thankYou">Confirmation</button>
+
+            </div>
+          </div>
+        </div>
+    </div>
 
     <footer class="bg-dark white-text">
         <div class="container">
