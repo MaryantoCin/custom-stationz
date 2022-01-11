@@ -1,3 +1,91 @@
 td{
     padding-right: 3rem;
 }
+section{
+    min-height: 100vh;
+}
+.floating-text{
+    position: absolute;
+    left: 50%;
+    background-color: white;
+    padding: 0 1rem;
+    top: -.5rem;
+}
+.black-button{
+    background-color: black;
+    border-radius: 6px;
+    border: none;
+    padding: .75rem;
+}
+.circle{
+    background-color: black;
+    width: 1200px;
+    height: 1200px;    
+    border-radius: 100%;
+    box-shadow: 1rem 1rem 2rem gray;
+}
+.card-circle{
+    border: solid 1px lightgray;
+    width: 32px;
+    height: 32px;    
+    border-radius: 100%;
+}
+.end-25{
+    right: 5%;
+}
+.bottom-5{
+    bottom: 0px;
+}
+.top-40{
+    top: 40%;
+}
+.w-25{
+    width: 25%;
+}
+img{
+    width: 500px;
+}
+.product-img{
+    width: 250px;;
+}
+.payment-img{
+    width: 75px;
+}
+
+.checkout-img{
+    height: 150px;
+    width: auto;
+}
+.thick-hr{
+    opacity: 1;
+    border-top: solid 10px black;
+}
+.logo{
+    width: 300px;
+}
+.display-none{
+    background: none;
+    border:none;
+}
+.navbar-logo{
+    width: 100px;
+}
+.navbar-icon{
+    width: 24px;
+    height: auto;
+}
+.icon-16{
+    width: 16px;
+}
+.white-text{
+    color: white;
+}
+.logo-24{
+    width: 24px;
+}
+.address-card{
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    border-left: 10px solid black;
+    box-shadow: 2px 2px 4px lightgray;
+}
