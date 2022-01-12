@@ -10,4 +10,9 @@ class Discount extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

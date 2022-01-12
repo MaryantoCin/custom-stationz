@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DiscountSeeder extends Seeder
 {
@@ -13,6 +14,10 @@ class DiscountSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $data = [
+            ['id' => 1, 'code' => 'TEST123', 'amount' => '20000'],
+        ];
+
+        DB::table('discounts')->insert($data);
     }
 }

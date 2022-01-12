@@ -10,4 +10,14 @@ class OrderDetail extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function mouse_variant()
+    {
+        return $this->belongsTo(MouseVariant::class);
+    }
 }
