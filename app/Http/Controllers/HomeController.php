@@ -205,6 +205,15 @@ class HomeController extends Controller
             'status' => 'progressed',
         ]);
 
+        if ($cart->address == null) {
+            $address = Address::where([
+                ['user_id', '=', $user->id],
+            ])->first();
+            $cart->update([
+                'address_id' => $address->id,
+            ]);
+        }
+
         return view('finish_checkout', ['cart' => $cart]);
     }
 

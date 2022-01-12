@@ -16,7 +16,8 @@
                     <span>{{ $addresses->first()->address }}</span> <br>
                 </div>
                 <div class="row my-3 m-0">
-                    <button class="btn btn-secondary btn-large w-auto">Choose Another Address</button>
+                    <button class="btn btn-outline-dark btn-large w-auto" data-bs-toggle="modal"
+                        data-bs-target="#changeAddress">Choose Another Address</button>
                 </div>
 
                 <div class="row mt-5">
@@ -182,7 +183,37 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="changeAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="{{ route('update_checkout', $cart) }}" method="post">
+            @method('patch')
+            @csrf
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Choose your Address</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Registered Address</h6>
+                        <hr class="m-0">
+                        @foreach ($addresses as $address)
+                            <div class="form-check mx-2 mt-2">
+                                <input class="form-check-input" type="radio" name="address" id="{{ $address->id }}"
+                                    value="{{ $address->id }}" {{ $cart->address == $address ? 'checked' : '' }}>
+                                <label class="form-check-label" for="{{ $address->id }}">
+                                    {{ $address->name }} - {{ $address->phone_number }} <br>
+                                    {{ $address->address }}</ </label>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-dark">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="modal fade" id="paymentMethod" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

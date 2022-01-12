@@ -23,19 +23,13 @@
                         </div>
                         <div class="mb-2 row">
                             <div class="col-2">Password</div>
-                            <div class=" col text-muted">Last Updated at 22 January 2021</div>
+                            <div class=" col text-muted">Last Updated at {{ Auth::user()->password_updated_at }}</div>
                             <div class="col-2">
-                                <button class="btn btn-outline-dark w-100">Update</button>
+                                <button class="btn btn-outline-dark w-100" data-bs-toggle="modal"
+                                    data-bs-target="#changePassword">Update</button>
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('change_password') }}" method="post">
-                        @csrf
-                        <input type="password" name="old_password">
-                        <input type="password" name="new_password">
-                        <input type="password" name="new_password_confirmation">
-                        <button type="submit">Change password</button>
-                    </form>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -74,4 +68,43 @@
             </div>
         </div>
     </section>
+
+    <form action="{{ route('change_password') }}" method="post">
+        @csrf
+        <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="password1" class="form-label">Old Password</label>
+                            <input type="password" id="password1" class="form-control" name="old_password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password2" class="form-label">New Password</label>
+                            <input type="password" id="password2" class="form-control" name="new_password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password3" class="form-label">Confirm Password</label>
+                            <input type="password" id="password3" class="form-control"
+                                aria-describedby="passwordHelpBlock" name="new_password_confirmation">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Your password must be 8-20 characters long, contain letters and numbers, and must not
+                                contain
+                                spaces, special characters, or emoji.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-dark">Update Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection
