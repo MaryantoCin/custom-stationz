@@ -53,4 +53,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/product', [AdminController::class, 'admin_view_product'])->name('admin_view_product');
+    Route::get('/admin/transaction', [AdminController::class, 'admin_view_transaction'])->name('admin_view_transaction');
+    Route::get('/admin/payment', [AdminController::class, 'admin_view_payment'])->name('admin_view_payment');
+    Route::post('/admin/payment/{payment}', [AdminController::class, 'admin_confirm_payment'])->name('admin_confirm_payment');
 });

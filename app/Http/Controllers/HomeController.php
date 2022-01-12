@@ -227,6 +227,11 @@ class HomeController extends Controller
     public function view_profile()
     {
         $user = Auth::user();
+
+        if ($user->role == 'admin') {
+            return Redirect::route('admin_view_product');
+        }
+
         return view('profile', ['user' => $user]);
     }
 
