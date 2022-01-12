@@ -47,25 +47,18 @@
             <div class="col-md-2">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">My Profile</a>
+                      <a class="nav-link active" aria-current="page" href="#">Admin Account</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">Address Book</a>
+                      <a class="nav-link text-dark" aria-current="page" href="#">Product</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">Transaction History</a>
+                      <a class="nav-link text-dark" href="#">Transaction</a>
                     </li>
                     <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
+                    <li class="nav-item">   
                       <a class="nav-link text-dark" href="#">Payment Confirmation</a>
                     </li>
-                    <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" href="#">Settings</a>
-                    </li>
-                    <li class="nav-item">
                     <li class="nav-item">
                       <a class="nav-link text-muted" href="#">Log Out</a>
                     </li>
@@ -73,10 +66,10 @@
                     </li>
                   </ul>
             </div>
-            <div class="col">
+            <div class="col-md-8">
                 <div class="row">
-                    <h4>My Profile</h4>
-                    <div class="col-md-8">
+                    <h4>My Account</h4>
+                    <div class="col">
                         <h6 class=mt-4>Personal Data</h6>
                         <hr class="m-0 mb-2">
                         <div class="mb-2 row">
@@ -116,14 +109,6 @@
                         </div>
                         <button class="btn btn-outline-dark">Save</button>
                     </div>
-                    <div class="col border">
-                        <div class="d-flex flex-column justify-content-center align-items-center h-100">
-                            <img src="../../public/asset/avatar.png" alt="" style="width:100px">
-                            <input type="file" class="btn btn-outline-dark mt-1"><br>
-                            <small class="muted-text">Image size: max 1 Mb</small>
-                            <small class="muted-text">Format extension: .JPEG .PNG</small>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -144,9 +129,104 @@
                         <button class="btn btn-outline-dark w-auto">Save</button>
                     </div>
                 </div>
+                <div class="row">
+                    <h6 class=mt-4>Account Settings</h6>
+                    <hr class="m-0 mb-2">
+                </div>
+                <div class="mb-2 row">
+                    <div class="col-2">Password</div>
+                    <div class=" col text-muted">Last Updated at 22 January 2021</div>
+                    <div class="col-2">
+                        <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#changePassword">Update</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6 class=mt-4>Security</h6>
+                        <hr class="m-0 mb-2">
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <div>Log out from all devices</div>
+                                <small class="text-muted">Signed in on a shared device but forgot to sign it out? End all sessions by logging out of all devices.</small>
+                            </div>
+                            <div class="col-2">
+                                <button class=" btn btn-dark w-100 align-items-center">Log out</button>
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col">
+                                <div>Delete account</div>
+                                <small class="text-muted">By deleting your account, You can not do the transaction anymore.</small>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-dark w-100">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="thankYou" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thank You for Your Payment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              Please wait a moment.<br>
+              We will verify your payment maximum 1x24 hours.<br><br>
+              If your payment have already been verified, The status of your order will be automatically change to<br>
+              <div class="d-flex justify-content-center mt-2">
+                  <h5><span class="badge bg-warning">In Progress</span></h5>
+                  <h5><span class="badge bg-secondary ms-2">Process</span></h5>
+              </div>
+
+            </div>
+            <div class="modal-footer w-100 m-auto">
+                <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Buy Again</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Old Password</label>
+                    <input type="password" id="password1" class="form-control">
+                </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">New Password</label>
+                <input type="password" id="password2" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password3" class="form-label">Confirm Password</label>
+                <input type="password" id="password3" class="form-control" aria-describedby="passwordHelpBlock">
+                <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-dark">Update Password</button>
+            </div>
+            </div>
+        </div>
+    </div>
+ 
+
+    
 
     <footer class="bg-dark white-text">
         <div class="container">
