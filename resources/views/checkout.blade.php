@@ -207,8 +207,7 @@
                                         value="{{ $method->id }}"
                                         {{ $cart->payment_method == $method ? 'checked' : '' }}>
                                     <label class="form-check-label" for="{{ $method->id }}">
-                                        <p>{{ $method->name }}</p>
-                                        <img class=payment-img src="../../public/asset/image 2.png" alt="">
+                                        <img class=payment-img src="{{ $method->logo }}" alt="">
                                     </label>
                                 </div>
                             @endif
@@ -224,8 +223,7 @@
                                         value="{{ $method->id }}"
                                         {{ $cart->payment_method == $method ? 'checked' : '' }}>
                                     <label class="form-check-label" for="{{ $method->id }}">
-                                        <span>{{ $method->name }}</span>
-                                        <img class=payment-img src="../../public/asset/image 2.png" alt="">
+                                        <img class=payment-img src="{{ $method->logo }}" alt="">
                                     </label>
                                 </div>
                             @endif

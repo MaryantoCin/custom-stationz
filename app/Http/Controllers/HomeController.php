@@ -20,11 +20,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $mice = Mouse::all();
@@ -81,6 +76,15 @@ class HomeController extends Controller
     public function view_cart()
     {
         $user = Auth::user();
+
+        $checkout = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'waiting'],
+        ])->first();
+
+        if ($checkout) {
+            return Redirect::route('view_checkout');
+        }
 
         $cart = Order::where([
             ['user_id', '=', $user->id],
@@ -140,6 +144,10 @@ class HomeController extends Controller
         $addresses = Address::where([
             ['user_id', '=', $user->id],
         ])->get();
+
+        if ($addresses->first() == null) {
+            return Redirect::route('create_address');
+        }
 
         $deliveries = Delivery::all();
         $payment_methods = PaymentMethod::all();

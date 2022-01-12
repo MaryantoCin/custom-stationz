@@ -24,7 +24,7 @@
                         Thank you for shopping at CUSTOM STATIONZ.<br>
                         For your payment through <b>BANK TRANSFER</b> through BCA, please transfer the <b>TOTAL PRICE
                             (Rp {{ number_format($grand_total, 2, ',', '.') }})</b> to our account number.<br><br>
-                        <img src="../../public/asset/image 2.png" alt="" class="payment-img"><br><br>
+                        <img src="{{ $cart->payment_method->logo }}" alt="" class="payment-img"><br><br>
                         <b>{{ $cart->payment_method->number }}<br>
                             {{ $cart->payment_method->owner }}</b><br><br>
                         If you already paid, you can confirm your payment in your profile or you can confirm here.<br>
