@@ -1,91 +1,97 @@
-td{
+td {
     padding-right: 3rem;
 }
-section{
+section {
     min-height: 100vh;
 }
-.floating-text{
+.floating-text {
     position: absolute;
     left: 50%;
     background-color: white;
     padding: 0 1rem;
-    top: -.5rem;
+    top: -0.5rem;
 }
-.black-button{
+.black-button {
     background-color: black;
     border-radius: 6px;
     border: none;
-    padding: .75rem;
+    padding: 0.75rem;
 }
-.circle{
+.circle {
     background-color: black;
     width: 1200px;
-    height: 1200px;    
+    height: 1200px;
     border-radius: 100%;
     box-shadow: 1rem 1rem 2rem gray;
 }
-.card-circle{
+.card-circle {
     border: solid 1px lightgray;
     width: 32px;
-    height: 32px;    
+    height: 32px;
     border-radius: 100%;
 }
-.end-25{
+.end-25 {
     right: 5%;
 }
-.bottom-5{
+.bottom-5 {
     bottom: 0px;
 }
-.top-40{
+.top-40 {
     top: 40%;
 }
-.w-25{
+.w-25 {
     width: 25%;
 }
-img{
+img {
     width: 500px;
 }
-.product-img{
-    width: 250px;;
+.product-img {
+    width: 250px;
 }
-.payment-img{
+.payment-img {
     width: 75px;
 }
 
-.checkout-img{
+.checkout-img {
     height: 150px;
     width: auto;
 }
-.thick-hr{
+.thick-hr {
     opacity: 1;
     border-top: solid 10px black;
 }
-.logo{
+.logo {
     width: 300px;
 }
-.display-none{
+.display-none {
     background: none;
-    border:none;
+    border: none;
 }
-.navbar-logo{
+.navbar-logo {
     width: 100px;
 }
-.navbar-icon{
+.navbar-icon {
     width: 24px;
     height: auto;
 }
-.icon-16{
+.icon-16 {
     width: 16px;
 }
-.white-text{
+.white-text {
     color: white;
 }
-.logo-24{
+.logo-24 {
     width: 24px;
 }
-.address-card{
+.address-card {
     border-radius: 8px;
     border: 1px solid #dee2e6;
     border-left: 10px solid black;
     box-shadow: 2px 2px 4px lightgray;
+}
+.black {
+    background-color: black;
+}
+.white {
+    background-color: white;
 }

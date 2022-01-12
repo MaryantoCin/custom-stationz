@@ -62,6 +62,8 @@ class HomeController extends Controller
         if ($cart == null) {
             $cart = Order::create([
                 'user_id' => $user->id,
+                'delivery_id' => 1,
+                'payment_method_id' => 1,
             ]);
         }
 
@@ -208,9 +210,9 @@ class HomeController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-            'date_of_birth' => ['required', 'date'],
-            'gender' => ['required', 'in:male,female'],
-            'profile_picture' => ['file', 'image', 'max:1024'],
+            'date_of_birth' => ['nullable', 'date'],
+            'gender' => ['nullable', 'in:male,female'],
+            'profile_picture' => ['nullable', 'image', 'max:1024'],
         ]);
 
         $file = $request->file('profile_picture');
