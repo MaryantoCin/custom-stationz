@@ -10,12 +10,14 @@
                 href="{{ route('view_address_book') }}">Address Book</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Transaction History</a>
+            <a class="nav-link {{ Route::currentRouteNamed('view_transaction_history') ? 'active' : 'text-dark' }}"
+                href="{{ route('view_transaction_history') }}">Transaction History</a>
         </li>
         <li class="nav-item">
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Payment Confirmation</a>
+            <a class="nav-link {{ Route::currentRouteNamed('view_payment_confirmation') ? 'active' : 'text-dark' }}"
+                href="{{ route('view_payment_confirmation') }}">Payment Confirmation</a>
         </li>
         <li class="nav-item">
         </li>

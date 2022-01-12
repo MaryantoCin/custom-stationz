@@ -72,7 +72,8 @@
                                 class="form-control @error('password') is-invalid @enderror" name="password"
                                 aria-describedby="passwordHelpBlock">
                             <small id="passwordHelpBlock" class="form-text text-muted">
-                                Your password must be 8 characters long, contain letters, symbols and numbers.
+                                Your password must be 8 characters long
+                                {{-- , contain letters, symbols and numbers. --}}
                             </small>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

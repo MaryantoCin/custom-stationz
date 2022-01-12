@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="container p-5">
-        <div class="row justify-content-end mb-3">
+        {{-- <div class="row justify-content-end mb-3">
             <div class="col-lg-2 input-group mb-3 w-25">
                 <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
                 <select class="form-select" id="inputGroupSelect01">
@@ -10,7 +10,7 @@
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-            </div>
+            </div> --}}
         </div>
         <div class="row">
             @foreach ($mice as $mouse)

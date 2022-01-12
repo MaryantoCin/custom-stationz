@@ -30,7 +30,8 @@
                         If you already paid, you can confirm your payment in your profile or you can confirm here.<br>
                     </div>
                     <div class="modal-footer">
-                        <a href="" type="button" class="btn btn-dark" data-bs-dismiss="modal">Confirm</a>
+                        <a href="{{ route('view_payment_confirmation') }}" type="button" class="btn btn-dark"
+                            data-bs-dismiss="modal">Confirm</a>
                     </div>
                 </div>
             </div>

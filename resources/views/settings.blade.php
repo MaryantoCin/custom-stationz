@@ -93,9 +93,10 @@
                             <input type="password" id="password3" class="form-control"
                                 aria-describedby="passwordHelpBlock" name="new_password_confirmation">
                             <div id="passwordHelpBlock" class="form-text">
-                                Your password must be 8-20 characters long, contain letters and numbers, and must not
+                                Your password must be 8-20 characters long
+                                {{-- , contain letters and numbers, and must not
                                 contain
-                                spaces, special characters, or emoji.
+                                spaces, special characters, or emoji. --}}
                             </div>
                         </div>
                     </div>

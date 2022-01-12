@@ -44,4 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order/checkout/finish', [HomeController::class, 'finish_checkout'])->name('finish_checkout');
     Route::get('/order/checkout', [HomeController::class, 'view_checkout'])->name('view_checkout');
     Route::patch('/order/update/{order}', [HomeController::class, 'update_checkout'])->name('update_checkout');
+    Route::get('/order/history', [HomeController::class, 'view_transaction_history'])->name('view_transaction_history');
+    Route::get('/payment/confirmation', [HomeController::class, 'view_payment_confirmation'])->name('view_payment_confirmation');
+    Route::post('/payment/confirmation', [HomeController::class, 'submit_payment_confirmation'])->name('submit_payment_confirmation');
 });

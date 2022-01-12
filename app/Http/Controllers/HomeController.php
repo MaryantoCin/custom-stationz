@@ -9,6 +9,7 @@ use App\Models\Mouse;
 use App\Models\MouseVariant;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\User;
 use App\Rules\CurrentPassword;
@@ -214,6 +215,12 @@ class HomeController extends Controller
             ]);
         }
 
+        if ($cart->payment_method->type == 'virtual') {
+            $cart->update([
+                'status' => 'confirmed',
+            ]);
+        }
+
         return view('finish_checkout', ['cart' => $cart]);
     }
 
@@ -221,6 +228,17 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         return view('profile', ['user' => $user]);
+    }
+
+    public function view_transaction_history()
+    {
+        $user = Auth::user();
+
+        $transactions = Order::where([
+            ['user_id', '=', $user->id],
+        ])->get();
+
+        return view('transaction_history', ['transactions' => $transactions]);
     }
 
     public function update_personal_data(Request $request)
@@ -343,7 +361,7 @@ class HomeController extends Controller
 
         $request->user()->update([
             'password' => Hash::make($request->new_password),
-            'password_updated_at' => Carbon::now(),
+            'password_updated_at' => Carbon::now()->timestamp,
         ]);
 
         $request->session()->flash('message', 'Successfully updated password');
@@ -355,5 +373,38 @@ class HomeController extends Controller
         $user = Auth::user();
         User::destroy($user->id);
         return Redirect::route('login');
+    }
+
+    public function view_payment_confirmation()
+    {
+        return view('payment_confirmation');
+    }
+
+    public function submit_payment_confirmation(Request $request)
+    {
+        $request->validate([
+            'order_id' => ['required'],
+            'source_bank' => ['required'],
+            'dest_bank' => ['required'],
+            'number' => ['required'],
+            'name' => ['required'],
+            'amount' => ['required'],
+            'transfer_date' => ['required'],
+            'evidence' => ['required'],
+        ]);
+
+        $file = $request->file('evidence');
+        if ($file) {
+            $filename = time() . "_" . $file->getClientOriginalName();
+            $file->storeAs('public', $filename);
+        }
+
+        if (!empty($filename)) {
+            $request->evidence = $filename;
+        }
+
+        Payment::create($request->all());
+
+        return Redirect::route('view_transaction_history');
     }
 }
