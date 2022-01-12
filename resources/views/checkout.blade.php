@@ -36,8 +36,7 @@
                         @endphp
                         @foreach ($cart->order_details as $detail)
                             <div class="d-flex">
-                                <img src="{{ asset('storage/' . $detail->mouse_variant->mouse->image) }}" alt=""
-                                    class="checkout-img">
+                                <img src="{{ $detail->mouse_variant->mouse->image }}" alt="" class="checkout-img">
                                 <div class="ms-3">
                                     <h6>{{ $detail->mouse_variant->mouse->name }}</h6>
                                     <div class="muted-text">Color Spray | Color {{ $detail->spray_color }}<br>
