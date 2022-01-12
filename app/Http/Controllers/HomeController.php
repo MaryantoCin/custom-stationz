@@ -236,7 +236,8 @@ class HomeController extends Controller
 
         $transactions = Order::where([
             ['user_id', '=', $user->id],
-            ['status', '!=', 'cart']
+            ['status', '!=', 'cart'],
+            ['status', '!=', 'waiting'],
         ])->get();
 
         return view('transaction_history', ['transactions' => $transactions]);
