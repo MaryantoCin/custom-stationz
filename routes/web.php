@@ -48,3 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/confirmation', [HomeController::class, 'view_payment_confirmation'])->name('view_payment_confirmation');
     Route::post('/payment/confirmation', [HomeController::class, 'submit_payment_confirmation'])->name('submit_payment_confirmation');
 });
+
+
+Route::middleware(['admin'])->group(function () {
+});

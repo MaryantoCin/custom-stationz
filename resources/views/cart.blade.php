@@ -19,6 +19,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <img class="product-img mb-3" src="{{ $detail->mouse_variant->mouse->image }}" alt="">
+                                <br>
                                 <strong>{{ $detail->mouse_variant->mouse->name }}</strong><br>
                                 <small class="muted-text">Color Spray | Color: {{ $detail->spray_color }}</small><br>
                                 <small class="muted-text">{{ $detail->painted_logo ? '+1 Sticker' : '' }}</small>
