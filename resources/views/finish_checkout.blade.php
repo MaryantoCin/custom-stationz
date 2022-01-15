@@ -31,7 +31,9 @@
                     </div>
                     <div class="modal-footer">
                         <a href="{{ route('view_payment_confirmation') }}" type="button" class="btn btn-dark"
-                            data-bs-dismiss="modal">Confirm</a>
+                            data-bs-dismiss="modal">Confirm (Bank Transfer)</a>
+                        <a href="{{ route('view_transaction_history') }}" type="button" class="btn btn-dark"
+                            data-bs-dismiss="modal">Done (Virtual)</a>
                     </div>
                 </div>
             </div>
