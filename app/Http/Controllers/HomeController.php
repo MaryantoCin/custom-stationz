@@ -137,6 +137,10 @@ class HomeController extends Controller
             ['status', '=', 'cart'],
         ])->first();
 
+        if ($cart == null) {
+            return Redirect::back();
+        }
+
         $cart->update([
             'status' => 'waiting',
         ]);
