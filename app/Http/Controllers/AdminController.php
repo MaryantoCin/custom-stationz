@@ -177,4 +177,12 @@ class AdminController extends Controller
         MouseVariant::destroy($mouseVariant->id);
         return Redirect::back();
     }
+
+    public function update_order_status(Request $request, Order $order)
+    {
+        $order->update([
+            'status' => $request->status,
+        ]);
+        return Redirect::back();
+    }
 }

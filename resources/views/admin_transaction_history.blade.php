@@ -56,9 +56,11 @@
                                             class="text-muted">{{ $transaction->order_details->first()->quantity }}x
                                             Rp
                                             {{ $transaction->order_details->first()->mouse_variant->price }}</small><br>
-                                        <small class="text-muted">+{{ $transaction->order_details->count() - 1 }}
-                                            more
-                                            product</small><br>
+                                        @if ($transaction->order_details->count() >= 2)
+                                            <small class="text-muted">+{{ $transaction->order_details->count() - 1 }}
+                                                more
+                                                product</small><br>
+                                        @endif
                                     </div>
                                     <div class="col">
                                         <h6>Address</h6>
@@ -110,21 +112,41 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                                    checked>
-                                <label class="btn btn-outline-dark btn-sm"
-                                    for="btnradio1">{{ $transaction->status }}</label>
+                        <form action="{{ route('update_order_status', $transaction) }}" method="post">
+                            @method('patch')
+                            @csrf
+                            <div class="d-flex justify-content-between">
+                                <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="status" id="btnradio1"
+                                        autocomplete="off" value="progressed"
+                                        {{ $transaction->status == 'progressed' ? 'checked' : '' }}>
+                                    <label class="btn btn-outline-dark btn-sm" for="btnradio1">progressed</label>
 
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                    autocomplete="off">
-                                <label class="btn btn-outline-dark btn-sm" for="btnradio2">Completed</label>
+                                    <input type="radio" class="btn-check" name="status" id="btnradio2"
+                                        autocomplete="off" value="confirmed"
+                                        {{ $transaction->status == 'confirmed' ? 'checked' : '' }}>
+                                    <label class="btn btn-outline-dark btn-sm" for="btnradio2">confirmed</label>
+
+                                    <input type="radio" class="btn-check" name="status" id="btnradio3"
+                                        autocomplete="off" value="delivered"
+                                        {{ $transaction->status == 'delivered' ? 'checked' : '' }}>
+                                    <label class="btn btn-outline-dark btn-sm" for="btnradio3">delivered</label>
+
+                                    <input type="radio" class="btn-check" name="status" id="btnradio4"
+                                        autocomplete="off" value="completed"
+                                        {{ $transaction->status == 'completed' ? 'checked' : '' }}>
+                                    <label class="btn btn-outline-dark btn-sm" for="btnradio4">completed</label>
+
+                                    <input type="radio" class="btn-check" name="status" id="btnradio5"
+                                        autocomplete="off" value="cancelled"
+                                        {{ $transaction->status == 'cancelled' ? 'checked' : '' }}>
+                                    <label class="btn btn-outline-dark btn-sm" for="btnradio5">cancelled</label>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary btn-sm">Update Status</button>
+                                </div>
                             </div>
-                            <div>
-                                <button class="btn btn-primary btn-sm">Update Status</button>
-                            </div>
-                        </div>
+                        </form>
                         <h5><span class="badge bg-dark"></span></h5>
                         <div class="row">
                             <small class="text-muted col-3">Transaction ID</small>

@@ -1,5 +1,4 @@
-
-.white-space-prewrap{
+.white-space-prewrap {
     white-space: pre-wrap;
 }
 td {
@@ -33,6 +32,11 @@ section {
     width: 32px;
     height: 32px;
     border-radius: 100%;
+}
+.card-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .end-25 {
     right: 5%;

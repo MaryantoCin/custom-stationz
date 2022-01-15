@@ -63,4 +63,5 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/variant/{mouse}', [AdminController::class, 'add_mouse_variant'])->name('add_mouse_variant');
     Route::patch('/admin/variant/{mouse_variant}', [AdminController::class, 'update_mouse_variant'])->name('update_mouse_variant');
     Route::delete('/admin/variant/{mouse_variant}', [AdminController::class, 'delete_mouse_variant'])->name('delete_mouse_variant');
+    Route::patch('/admin/transaction/{order}', [AdminController::class, 'update_order_status'])->name('update_order_status');
 });
