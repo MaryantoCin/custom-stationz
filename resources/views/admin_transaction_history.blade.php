@@ -7,27 +7,37 @@
                 <div class="row">
                     <h4>Transaction List</h4>
                     <div class="col border p-5">
-                        {{-- <div class="d-flex justify-content-between align-items-center mb-3"> --}}
+                        <div class="d-flex justify-content-between align-items-center mb-3">
                             <h6>All Orders</h6>
                         </div>
-                        {{-- <div class="mb-5">
-                            <div class="input-group rounded">
-                                <input type="search" class="form-control rounded" placeholder="Find your transaction"
-                                    aria-label="Search" style="width: 400px;" aria-describedby="search-addon" />
-                                <span class="input-group-text border-0" id="search-addon">
-                                    <i class="fa fa-search"></i>
-                                </span>
+                        <form action="">
+                            <div class="mb-5">
+                                <div class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="Find your transaction"
+                                        aria-label="Search" style="width: 400px;" aria-describedby="search-addon" name="id"
+                                        value="{{ Request::get('id') }}" />
+                                    <button class="input-group-text border-0">
+                                        <i class="fa fa-search"></i>
+                                    </button>
 
-                                <select name="" id="" class="form-control ms-3">
-                                    <option value="" selected>Status</option>
-                                    <option value="1">Completed</option>
-                                    <option value="2">On Process</option>
-                                    <option value="3">Failed</option>
-                                </select>
+                                    <select name="status" id="" class="form-control ms-3"
+                                        value="{{ Request::get('id') }} " onchange="this.form.submit()">
+                                        <option value="" selected>
+                                            {{ Request::get('status') ? Request::get('status') : 'Status' }}
+                                        </option>
+                                        <option value="progressed">Progressed</option>
+                                        <option value="confirmed">Confirmed</option>
+                                        <option value="delivered">Delivered</option>
+                                        <option value="completed">Completed</option>
+                                        <option value="cancelled">Cancelled</option>
+                                    </select>
 
-                                <input class="form-control rounded ms-3" type="date" name="" id="" style="width: 100px;">
+                                    <input class="form-control rounded ms-3" type="date" name="date" id=""
+                                        style="width: 100px;" value="{{ Request::get('date') }}"
+                                        onchange="this.form.submit()">
+                                </div>
                             </div>
-                        </div> --}}
+                        </form>
                         @foreach ($orders as $transaction)
                             <div class="address-card p-3 mb-3">
                                 <div class="row">
@@ -52,7 +62,8 @@
                                     </div>
                                     <div class="col">
                                         <h6>Address</h6>
-                                        <small class="text-muted white-space-prewrap">{{ $transaction->address->address }}</small>
+                                        <small
+                                            class="text-muted white-space-prewrap">{{ $transaction->address->address }}</small>
                                     </div>
                                     <div class="col ">
                                         <div class="row mb-3">
@@ -101,12 +112,15 @@
                     <div class="modal-body">
                         <div class="d-flex justify-content-between">
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                <label class="btn btn-outline-dark btn-sm" for="btnradio1">{{ $transaction->status }}</label>
-                              
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-dark btn-sm" for="btnradio2">Completed</label> 
-                              </div>
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-dark btn-sm"
+                                    for="btnradio1">{{ $transaction->status }}</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-dark btn-sm" for="btnradio2">Completed</label>
+                            </div>
                             <div>
                                 <button class="btn btn-primary btn-sm">Update Status</button>
                             </div>
@@ -172,7 +186,8 @@
                                     <small class="text-muted col">Address</small>
                                     <small class="text-dark col">{{ $transaction->address->name }}<br>
                                         {{ $transaction->address->phone_number }}<br>
-                                        <span class=" white-space-prewrap">{{ $transaction->address->address }}</span></small>
+                                        <span
+                                            class=" white-space-prewrap">{{ $transaction->address->address }}</span></small>
                                 </div>
                             </div>
                             <div class="col">

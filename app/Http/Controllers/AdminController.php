@@ -11,25 +11,59 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
-    public function admin_view_product()
+    public function admin_view_product(Request $request)
     {
-        $mices = Mouse::all();
+        $query = $request->query('query');
+        if ($query) {
+            $mices = Mouse::where('name', 'like', '%' . $query . "%")->get();
+        } else {
+            $mices = Mouse::all();
+        }
 
         return view('admin_product', ['mices' => $mices]);
     }
 
-    public function admin_view_transaction()
+    public function admin_view_transaction(Request $request)
     {
         $orders = Order::where([
             ['status', '!=', 'cart'],
             ['status', '!=', 'waiting'],
-        ])->get();
+        ]);
+
+        $id = $request->query('id');
+        if ($id != null) {
+            $orders->where('id', '=', $id);
+        }
+
+        $status = $request->query('status');
+        if ($status != null) {
+            $orders->where('status', $status);
+        }
+
+        $date = $request->query('date');
+        if ($date != null) {
+            $orders->whereDate('created_at', $date);
+        }
+        $orders = $orders->get();
+
         return view('admin_transaction_history', ['orders' => $orders]);
     }
 
-    public function admin_view_payment()
+    public function admin_view_payment(Request $request)
     {
-        $payments = Payment::all();
+        $payments = Payment::orderBy('created_at');
+        $id = $request->query('id');
+        if ($id != '') {
+            $payments->where('order_id', '=', $id);
+        }
+
+        $status = $request->query('is_done');
+        if ($status != '') {
+            $payments->where('is_done', $status);
+        }
+
+        $payments = $payments->get();
+
         return view('admin_payment_confirmation', ['payments' => $payments]);
     }
 
@@ -112,6 +146,12 @@ class AdminController extends Controller
             'description' => $request->description,
         ]);
 
+        return Redirect::back();
+    }
+
+    public function delete_mouse(Mouse $mouse)
+    {
+        Mouse::destroy($mouse->id);
         return Redirect::back();
     }
 

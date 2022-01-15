@@ -8,22 +8,27 @@
                     <h4>Payment Confirmation List</h4>
                     <div class="col border p-5">
                         <h6>All Payment</h6>
-                        {{-- <div class="mb-5">
-                            <div class="input-group rounded">
-                                <input type="search" class="form-control rounded" placeholder="Find your transaction"
-                                    aria-label="Search" style="width: 400px;" aria-describedby="search-addon" />
-                                <span class="input-group-text border-0" id="search-addon">
-                                    <i class="fa fa-search"></i>
-                                </span>
+                        <form action="" method="get">
+                            <div class="mb-5">
+                                <div class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="Find your transaction"
+                                        aria-label="Search" style="width: 400px;" aria-describedby="search-addon" name="id"
+                                        value="{{ Request::get('id') }}" />
+                                    <button class="input-group-text border-0" id="search-addon">
+                                        <i class="fa fa-search"></i>
+                                    </button>
 
-                                <select name="" id="" class="form-control ms-3">
-                                    <option value="" selected>Status</option>
-                                    <option value="1">Completed</option>
-                                    <option value="2">On Process</option>
-                                    <option value="3">Failed</option>
-                                </select>
+
+                                    <select name="is_done" id="" class="form-control ms-3"
+                                        value="{{ Request::get('is_done') }} " onchange="this.form.submit()">
+                                        <option value="" selected>Status
+                                        </option>
+                                        <option value="1">Done</option>
+                                        <option value="0">Not Done</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div> --}}
+                        </form>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
@@ -39,7 +44,8 @@
                                 @foreach ($payments as $payment)
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <strong>{{ $payment->order_id }}</strong><br>
+                                            <a
+                                                href="{{ route('admin_view_transaction', ['id' => $payment->order_id]) }}"><strong>{{ $payment->order_id }}</strong><br></a>
                                         </div>
                                         <div class="col">{{ $payment->source_bank }}</div>
                                         <div class="col">{{ $payment->dest_bank }}</div>
