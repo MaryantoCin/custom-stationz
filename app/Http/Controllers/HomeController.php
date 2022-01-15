@@ -30,9 +30,9 @@ class HomeController extends Controller
         } else if ($option == 2) {
             $mice->orderBy('created_at', 'ASC');
         } else if ($option == 3) {
-            $mice->orderBy('name', 'DESC');
-        } else if ($option == 4) {
             $mice->orderBy('name', 'ASC');
+        } else if ($option == 4) {
+            $mice->orderBy('name', 'DESC');
         }
         $mice = $mice->get();
         return view('home', ['mice' => $mice]);
