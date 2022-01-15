@@ -146,8 +146,7 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <img src="{{ asset('storage/' . $detail->mouse_variant->mouse->image) }}"
-                                                    src="{{ $detail->mouse_variant->mouse->image }}" alt=""
-                                                    style="width: 100%">
+                                                    alt="" style="width: 100%">
                                             </div>
                                             <div class="col-md-7">
                                                 <small>{{ $detail->mouse_variant->mouse->name }}</small><br>
