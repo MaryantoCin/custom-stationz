@@ -232,6 +232,17 @@ class HomeController extends Controller
             ]);
         }
 
+        $order_details = $cart->order_details;
+
+        foreach ($order_details as $detail) {
+            $mouse_variant_id = $detail->mouse_variant_id;
+
+            $mouse_variant = MouseVariant::find($mouse_variant_id);
+
+            $mouse_variant->stock = $mouse_variant->stock - $detail->quantity;
+            $mouse_variant->save();
+        }
+
         return view('finish_checkout', ['cart' => $cart]);
     }
 
