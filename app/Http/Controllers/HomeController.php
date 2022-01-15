@@ -26,13 +26,13 @@ class HomeController extends Controller
         $mice = Mouse::orderBy('created_at');
         $option = $request->query('option');
         if ($option == 1) {
-            $mice->orderBy('created_at', 'DESC');
+            $mice->orderBy('created_at', 'desc');
         } else if ($option == 2) {
-            $mice->orderBy('created_at', 'ASC');
+            $mice->orderBy('created_at', 'asc');
         } else if ($option == 3) {
-            $mice->orderBy('name', 'ASC');
+            $mice->orderBy('name', 'asc');
         } else if ($option == 4) {
-            $mice->orderBy('name', 'DESC');
+            $mice->orderBy('name', 'desc');
         }
         $mice = $mice->get();
         return view('home', ['mice' => $mice]);
