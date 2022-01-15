@@ -401,12 +401,13 @@ class HomeController extends Controller
         ]);
 
         $file = $request->file('evidence');
+        $filename = null;
         if ($file) {
             $filename = time() . "_" . $file->getClientOriginalName();
             $file->storeAs('public', $filename);
         }
 
-        if (!empty($filename)) {
+        if ($filename) {
             $request->evidence = $filename;
         }
 

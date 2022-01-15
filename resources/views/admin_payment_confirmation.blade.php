@@ -47,10 +47,11 @@
                                         <div class="col">Rp {{ $payment->amount }}</div>
                                         <div class="col">{{ $payment->transfer_date }}</div>
                                         <div class="col">
-                                            <button class="btn" data-bs-toggle="modal"
-                                                data-bs-target="#updateProduct"><i class="fa fa-download"></i></button>
+                                            <a href="" download class="btn" data-bs-toggle="modal"
+                                                data-bs-target="#updateProduct"><i class="fa fa-download"></i></a>
                                             @if ($payment->is_done == false)
-                                                <form action="{{ route('admin_confirm_payment', $payment) }}" method="post">
+                                                <form action="{{ route('admin_confirm_payment', $payment) }}"
+                                                    method="post">
                                                     @csrf
                                                     <button class="btn ms-3 btn-dark">Confirm</button>
                                                 </form>
