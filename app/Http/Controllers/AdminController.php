@@ -37,6 +37,42 @@ class AdminController extends Controller
         $payment->update([
             'is_done' => true
         ]);
+
+        $order = Order::where([
+            ['id', '=', $payment->order_id],
+        ])->first();
+
+        $order->update([
+            'payment_id' => $payment->id,
+            'status' => 'confirmed',
+        ]);
+
         return Redirect::back();
+    }
+
+    public function add_mouse(Request $request)
+    {
+        $request->validate([
+            'image' => ['required'],
+            'name' => ['required'],
+            'brand' => ['required'],
+            'description' => ['required'],
+        ]);
+
+        $file = $request->file('image');
+        $filename = null;
+        if ($file) {
+            $filename = time() . "_" . $file->getClientOriginalName();
+            $file->storeAs('public', $filename);
+        }
+
+        Mouse::create([
+            'image' => $filename,
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'description' => $request->description,
+        ]);
+
+        return Redirect::route('admin_view_product');
     }
 }

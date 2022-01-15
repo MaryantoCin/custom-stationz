@@ -39,7 +39,7 @@
                                 @foreach ($payments as $payment)
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <strong>{{ $payment->id }}</strong><br>
+                                            <strong>{{ $payment->order_id }}</strong><br>
                                         </div>
                                         <div class="col">{{ $payment->source_bank }}</div>
                                         <div class="col">{{ $payment->dest_bank }}</div>
