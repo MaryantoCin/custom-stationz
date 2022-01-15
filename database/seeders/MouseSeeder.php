@@ -15,9 +15,9 @@ class MouseSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['id' => 1, 'name' => 'Logitech G102', 'brand' => 'Logitech', 'description' => 'Lorem ipsum', 'image' => 'https://static.bmdstatic.com/pk/product/large/5af92f60623e6.jpg'],
-            ['id' => 2, 'name' => 'Fantech Helios XD3', 'brand' => 'Fantech', 'description' => 'Lorem ipsum', 'image' => 'https://fantech.id/media/catalog/product/cache/fac2e9b9cf31a91d30c294472004ecf5/m/o/mouse_gaming_helios_xd3_-_fantech_-_1_2.png'],
-            ['id' => 3, 'name' => 'Rexus Daxa Air II Wireless', 'brand' => 'Rexus', 'description' => 'Lorem ipsum', 'image' => 'https://pro.rexus.id/wp-content/uploads/sites/11/2020/12/MP_DaxaAir2_02.jpg'],
+            ['id' => 1, 'name' => 'Logitech G102', 'brand' => 'Logitech', 'description' => 'G102 is inspired by the classic design of the legendary Logitech G100S Gaming Mouse. Beloved by gamers worldwide and a favorite of esports pros, it’s a classic design that we’ve re-engineered and optimized from the inside-out to be lightweight, durable and comfortable.'],
+            ['id' => 2, 'name' => 'Fantech Helios XD3', 'brand' => 'Fantech', 'description' => 'Fantech HELIOS XD3 designed with 4 RGB spectrum modes, You can set it to RGB colors that you like, to enchance your gaming experience.'],
+            ['id' => 3, 'name' => 'Rexus Daxa Air II Wireless', 'brand' => 'Rexus', 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dolor arcu, viverra at velit id, dictum ullamcorper libero. Ut fringilla a velit at venenatis. Etiam lacinia diam vel nisi tristique venenatis.'],
         ];
 
         DB::table('mice')->insert($data);

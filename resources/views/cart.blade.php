@@ -19,11 +19,14 @@
                         <div class="row mb-2 rounded align-items-center bg-light py-2">
                             <div class="col-md-4">
                                 <div class="d-flex align-items-center">
-                                    <img class="payment-img" src="{{ $detail->mouse_variant->mouse->image }}" alt="">
+                                    <img class="payment-img"
+                                        src="{{ asset('storage/' . $detail->mouse_variant->mouse->image) }}" alt="">
                                     <div class="ms-2">
                                         <strong>{{ $detail->mouse_variant->mouse->name }}</strong><br>
-                                        <small class="muted-text">Color Spray | Color: {{ $detail->spray_color }}</small><br>
-                                        <small class="muted-text">{{ $detail->painted_logo ? '+1 Sticker' : '' }}</small>
+                                        <small class="muted-text">Color Spray | Color:
+                                            {{ $detail->spray_color }}</small><br>
+                                        <small
+                                            class="muted-text">{{ $detail->painted_logo ? '+1 Sticker' : '' }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -33,13 +36,15 @@
                                 <div class="d-flex w-100 align-items-center">
                                     <form action="{{ route('decrease_quantity', $detail) }}" method="post">
                                         @csrf
-                                        <button class="btn btn-sm w-100" type="submit"><i class="class fa fa-minus"></i></button>
+                                        <button class="btn btn-sm w-100" type="submit"><i
+                                                class="class fa fa-minus"></i></button>
                                     </form>
                                     <input type="number" class="form-control" aria-label="Username" style="width: 30%"
-                                    value="{{ $detail->quantity }}" disabled>
+                                        value="{{ $detail->quantity }}" disabled>
                                     <form action="{{ route('increase_quantity', $detail) }}" method="post">
                                         @csrf
-                                        <button class="btn btn-sm w-100" type="submit"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-sm w-100" type="submit"><i
+                                                class="fa fa-plus"></i></button>
                                     </form>
                                 </div>
                             </div>

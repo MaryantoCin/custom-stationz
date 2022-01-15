@@ -15,12 +15,12 @@ class DeliverySeeder extends Seeder
     public function run()
     {
         $data = [
-            ['id' => 1, 'name' => 'JNE', 'price' => '22000', 'type' => 'regular'],
-            ['id' => 2, 'name' => 'JNE', 'price' => '42000', 'type' => 'nextday'],
-            ['id' => 3, 'name' => 'JNT', 'price' => '22000', 'type' => 'regular'],
-            ['id' => 4, 'name' => 'JNT', 'price' => '42000', 'type' => 'nextday'],
+            ['id' => 1, 'name' => 'JNE', 'price' => '25000', 'type' => 'regular'],
+            ['id' => 2, 'name' => 'JNE', 'price' => '55000', 'type' => 'nextday'],
+            ['id' => 3, 'name' => 'JNT', 'price' => '20000', 'type' => 'regular'],
+            ['id' => 4, 'name' => 'JNT', 'price' => '45000', 'type' => 'nextday'],
             ['id' => 5, 'name' => 'SiCepat', 'price' => '22000', 'type' => 'regular'],
-            ['id' => 6, 'name' => 'SiCepat', 'price' => '42000', 'type' => 'nextday'],
+            ['id' => 6, 'name' => 'SiCepat', 'price' => '50000', 'type' => 'nextday'],
         ];
 
         DB::table('deliveries')->insert($data);

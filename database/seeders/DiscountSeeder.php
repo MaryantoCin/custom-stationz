@@ -16,6 +16,7 @@ class DiscountSeeder extends Seeder
     {
         $data = [
             ['id' => 1, 'code' => 'TEST123', 'amount' => '20000'],
+            ['id' => 2, 'code' => 'TAHUNBARU', 'amount' => '50000'],
         ];
 
         DB::table('discounts')->insert($data);

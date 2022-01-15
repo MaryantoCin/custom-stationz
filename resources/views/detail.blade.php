@@ -14,13 +14,16 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ $detail->mouse->image }}" class="d-block w-100" alt="..." data-bs-interval=1500>
+                            <img src="{{ asset('storage/' . $detail->mouse->image) }}" class="d-block w-100" alt="..."
+                                data-bs-interval=1500>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ $detail->mouse->image }}" class="d-block w-100" alt="..." data-bs-interval=1500>
+                            <img src="{{ asset('storage/' . $detail->mouse->image) }}" class="d-block w-100" alt="..."
+                                data-bs-interval=1500>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ $detail->mouse->image }}" class="d-block w-100" alt="..." data-bs-interval=1500>
+                            <img src="{{ asset('storage/' . $detail->mouse->image) }}" class="d-block w-100" alt="..."
+                                data-bs-interval=1500>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

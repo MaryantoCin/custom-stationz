@@ -22,7 +22,7 @@
                 <div class="col-sm-4 ms-0 ps-0">
                     <div>
                         <div class="position-relative">
-                            <img src="{{ $mouse->image }}" alt="" style="width: 100%;">
+                            <img src="{{ asset('storage/' . $mouse->image) }}" alt="" style="width: 100%;">
                             <h5 class="position-absolute" style="top:2rem"><span class="badge bg-danger text-light">New</span>
                             </h5>
                         </div>

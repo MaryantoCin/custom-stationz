@@ -13,7 +13,9 @@
                     <small>{{ $cart->address ? $cart->address->phone_number : $addresses->first()->phone_number }}</small>
                 </div>
                 <div class="row mt-2">
-                    <span class=" white-space-prewrap">{{ $cart->address ? $cart->address->address : $addresses->first()->address }}</span> <br>
+                    <span
+                        class=" white-space-prewrap">{{ $cart->address ? $cart->address->address : $addresses->first()->address }}</span>
+                    <br>
                 </div>
                 <div class="row my-3 m-0">
                     <button class="btn btn-outline-dark btn-large w-auto" data-bs-toggle="modal"
@@ -37,7 +39,8 @@
                         @endphp
                         @foreach ($cart->order_details as $detail)
                             <div class="d-flex">
-                                <img src="{{ $detail->mouse_variant->mouse->image }}" alt="" class="checkout-img">
+                                <img src="{{ asset('storage/' . $detail->mouse_variant->mouse->image) }}" alt=""
+                                    class="checkout-img">
                                 <div class="ms-3">
                                     <h6>{{ $detail->mouse_variant->mouse->name }}</h6>
                                     <div class="text-muted">Color Spray | Color {{ $detail->spray_color }}<br>
@@ -45,7 +48,7 @@
                                         {{ $detail->quantity }} pcs</div>
                                     <div class="mt-2">
                                         <h6>Rp
-                                        {{ number_format($detail->mouse_variant->price * $detail->quantity, 2, ',', '.') }}
+                                            {{ number_format($detail->mouse_variant->price * $detail->quantity, 2, ',', '.') }}
                                         </h6>
                                     </div>
                                 </div>
@@ -83,7 +86,8 @@
                         @csrf
                         <h5>Enter Promo Code</h5>
                         <div class="d-flex">
-                            <input class=form-control type="text" class="w-100" name="promo" placeholder="Enter promo code"
+                            <input class=form-control type="text" class="w-100" name="promo"
+                                placeholder="Enter promo code"
                                 value="{{ $cart->discount ? $cart->discount->code : '' }}">
                             <button class="btn btn-outline-dark" type="submit">Apply</button>
                         </div>

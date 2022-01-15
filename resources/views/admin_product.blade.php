@@ -36,7 +36,8 @@
                                 @foreach ($mices as $mouse)
                                     <div class="row mb-3">
                                         <div class="col-md-4">
-                                            <img class="product-img mb-3" src="{{ $mouse->image }}" alt=""><br>
+                                            <img class="product-img mb-3" src="{{ asset('storage/' . $mouse->image) }}"
+                                                alt=""><br>
                                             <strong>{{ $mouse->name }}</strong><br>
                                         </div>
                                         <div class="col"> - </div>

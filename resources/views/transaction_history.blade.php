@@ -32,7 +32,7 @@
                             <div class="address-card p-3 mb-3">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="{{ $transaction->order_details->first()->mouse_variant->mouse->image }}"
+                                        <img src="{{ asset('storage/' . $transaction->order_details->first()->mouse_variant->mouse->image) }}"
                                             alt="" style="width: 100%">
                                     </div>
                                     <div class="col-md-7">
@@ -99,8 +99,8 @@
                                     <div class="address-card p-3 mb-3">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img src="{{ $detail->mouse_variant->mouse->image }}" alt=""
-                                                    style="width: 100%">
+                                                <img src="{{ asset('storage/' . $detail->mouse_variant->mouse->image) }}"
+                                                    alt="" style="width: 100%">
                                             </div>
                                             <div class="col-md-7">
                                                 <small>{{ $detail->mouse_variant->mouse->name }}</small><br>
