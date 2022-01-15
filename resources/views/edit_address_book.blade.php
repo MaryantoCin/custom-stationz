@@ -23,7 +23,7 @@
                         <div class="modal-body bg-light">
                             <label for="address" class="form-label">New Address</label>
                             <textarea class="form-control" id="address" name="address" style="height: 100px"
-                                placeholder="Complete Address"></textarea>
+                                placeholder="Complete Address">{{ $address->address }}</textarea>
                         </div>
                         <div class="modal-footer">
                             <a href="{{ route('view_address_book') }}" type="button" class="btn btn-secondary"
