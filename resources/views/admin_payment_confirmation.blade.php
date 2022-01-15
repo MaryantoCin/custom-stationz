@@ -33,7 +33,7 @@
                                     <div class="col">ACCOUNT NUMBER</div>
                                     <div class="col">TRANSFER AMOUNT</div>
                                     <div class="col">TRANSFER DATE</div>
-                                    <div class="col">EVIDENCE</div>
+                                    <div class="col-md-2">EVIDENCE</div>
                                 </div>
                                 <hr>
                                 @foreach ($payments as $payment)
@@ -46,16 +46,19 @@
                                         <div class="col">{{ $payment->number }}</div>
                                         <div class="col">Rp {{ $payment->amount }}</div>
                                         <div class="col">{{ $payment->transfer_date }}</div>
-                                        <div class="col">
-                                            <a href="" download class="btn" data-bs-toggle="modal"
-                                                data-bs-target="#updateProduct"><i class="fa fa-download"></i></a>
-                                            @if ($payment->is_done == false)
-                                                <form action="{{ route('admin_confirm_payment', $payment) }}"
-                                                    method="post">
-                                                    @csrf
-                                                    <button class="btn ms-3 btn-dark">Confirm</button>
-                                                </form>
-                                            @endif
+                                        <div class="col-md-2">
+                                            <div class="d-flex">
+                                                <a href="{{ asset(isset($payment->evidence) ? 'storage/' . $payment->evidence : '') }}"
+                                                    download class="btn"><i class="fa fa-download"></i></a>
+
+                                                @if ($payment->is_done == false)
+                                                    <form action="{{ route('admin_confirm_payment', $payment) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <button class="btn ms-3 btn-dark">Confirm</button>
+                                                    </form>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach

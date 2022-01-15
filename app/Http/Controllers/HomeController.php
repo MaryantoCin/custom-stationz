@@ -389,16 +389,16 @@ class HomeController extends Controller
 
     public function submit_payment_confirmation(Request $request)
     {
-        $request->validate([
-            'order_id' => ['required'],
-            'source_bank' => ['required'],
-            'dest_bank' => ['required'],
-            'number' => ['required'],
-            'name' => ['required'],
-            'amount' => ['required'],
-            'transfer_date' => ['required'],
-            'evidence' => ['required'],
-        ]);
+        // $request->validate([
+        //     'order_id' => ['required'],
+        //     'source_bank' => ['required'],
+        //     'dest_bank' => ['required'],
+        //     'number' => ['required'],
+        //     'name' => ['required'],
+        //     'amount' => ['required'],
+        //     'transfer_date' => ['required'],
+        //     'evidence' => ['required'],
+        // ]);
 
         $file = $request->file('evidence');
         $filename = null;
@@ -406,12 +406,15 @@ class HomeController extends Controller
             $filename = time() . "_" . $file->getClientOriginalName();
             $file->storeAs('public', $filename);
         }
+        // dd($filename);
+
+        $data = $request->all();
 
         if ($filename) {
-            $request->evidence = $filename;
+            $data['evidence'] = $filename;
         }
 
-        Payment::create($request->all());
+        Payment::create($data);
 
         return Redirect::route('view_transaction_history');
     }
