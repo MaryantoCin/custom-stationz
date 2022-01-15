@@ -20,9 +20,21 @@
                             <div class="container p-5">
                                 <div class="row">
                                     <div class="mb-3">
-                                        <label for="orderID" class="form-label">Order ID</label>
-                                        <input type="text" class="form-control" id="orderID" placeholder="" required
+                                        <label for="orderID" class="form-label">Choose Your Order</label>
+                                        <select type="text" class="form-control" id="orderID" placeholder="" required
                                             name="order_id">
+                                            <option>-</option>
+                                            @foreach ($orders as $order)
+                                                <option value={{ $order->id }}> {{ $order->id }} - {{ ' ' }}
+                                                    @foreach ($order->order_details as $detail)
+                                                        {{ $detail->mouse_variant->mouse->name . ' (' . $detail->quantity . ' pcs)' }}
+                                                        @if (!$loop->last)
+                                                            ,
+                                                        @endif
+                                                    @endforeach
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">

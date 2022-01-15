@@ -384,21 +384,26 @@ class HomeController extends Controller
 
     public function view_payment_confirmation()
     {
-        return view('payment_confirmation');
+        $user = Auth::user();
+        $orders = Order::where([
+            ['user_id', '=', $user->id],
+            ['status', '=', 'progressed'],
+        ])->get();
+        return view('payment_confirmation', ['orders' => $orders]);
     }
 
     public function submit_payment_confirmation(Request $request)
     {
-        // $request->validate([
-        //     'order_id' => ['required'],
-        //     'source_bank' => ['required'],
-        //     'dest_bank' => ['required'],
-        //     'number' => ['required'],
-        //     'name' => ['required'],
-        //     'amount' => ['required'],
-        //     'transfer_date' => ['required'],
-        //     'evidence' => ['required'],
-        // ]);
+        $request->validate([
+            'order_id' => ['required'],
+            'source_bank' => ['required'],
+            'dest_bank' => ['required'],
+            'number' => ['required'],
+            'name' => ['required'],
+            'amount' => ['required'],
+            'transfer_date' => ['required'],
+            'evidence' => ['required'],
+        ]);
 
         $file = $request->file('evidence');
         $filename = null;
@@ -406,7 +411,6 @@ class HomeController extends Controller
             $filename = time() . "_" . $file->getClientOriginalName();
             $file->storeAs('public', $filename);
         }
-        // dd($filename);
 
         $data = $request->all();
 
