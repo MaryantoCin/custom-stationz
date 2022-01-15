@@ -1,17 +1,22 @@
 @extends('layouts.app')
 @section('content')
     <section class="container p-5">
-        {{-- <div class="row justify-content-end mb-3">
-            <div class="col-lg-2 input-group mb-3 w-25">
-                <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Newest</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div> --}}
-        </div>
+        <form action="" method="get">
+            <div class="row justify-content-end mb-3">
+                <div class="col-lg-2 input-group mb-3 w-25">
+                    <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
+                    <select class="form-select" id="inputGroupSelect01" name="option" onchange="this.form.submit()">
+                        @php
+                            $option = Request::get('option');
+                        @endphp
+                        <option value="1" {{ $option == 1 ? 'selected' : '' }}>Newest</option>
+                        <option value="2" {{ $option == 2 ? 'selected' : '' }}>Oldest</option>
+                        <option value="3" {{ $option == 3 ? 'selected' : '' }}>A-Z</option>
+                        <option value="4" {{ $option == 4 ? 'selected' : '' }}>Z-A</option>
+                    </select>
+                </div>
+            </div>
+        </form>
         <div class="row">
             @foreach ($mice as $mouse)
                 <div class="col-sm-4 ms-0 ps-0">

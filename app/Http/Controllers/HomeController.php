@@ -21,9 +21,20 @@ use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mice = Mouse::all();
+        $mice = Mouse::orderBy('created_at');
+        $option = $request->query('option');
+        if ($option == 1) {
+            $mice->orderBy('created_at', 'DESC');
+        } else if ($option == 2) {
+            $mice->orderBy('created_at', 'ASC');
+        } else if ($option == 3) {
+            $mice->orderBy('name', 'DESC');
+        } else if ($option == 4) {
+            $mice->orderBy('name', 'ASC');
+        }
+        $mice = $mice->get();
         return view('home', ['mice' => $mice]);
     }
 

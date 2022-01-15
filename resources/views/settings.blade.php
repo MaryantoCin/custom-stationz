@@ -23,7 +23,9 @@
                         </div>
                         <div class="mb-2 row">
                             <div class="col-2">Password</div>
-                            <div class=" col text-muted">Last Updated at {{ Auth::user()->password_updated_at }}</div>
+                            <div class=" col text-muted">
+                                {{ Auth::user()->password_updated_at ? 'Last Updated at ' . Auth::user()->password_updated_at : '' }}
+                            </div>
                             <div class="col-2">
                                 <button class="btn btn-outline-dark w-100" data-bs-toggle="modal"
                                     data-bs-target="#changePassword">Update</button>
