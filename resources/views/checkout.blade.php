@@ -9,11 +9,11 @@
                     <hr>
                 </div>
                 <div class="row">
-                    <b>{{ $addresses->first()->name }}</b> <br>
-                    <small>{{ $addresses->first()->phone_number }}</small>
+                    <b>{{ $cart->address ? $cart->address->name : $addresses->first()->name }}</b> <br>
+                    <small>{{ $cart->address ? $cart->address->phone_number : $addresses->first()->phone_number }}</small>
                 </div>
                 <div class="row mt-2">
-                    <span>{{ $addresses->first()->address }}</span> <br>
+                    <span>{{ $cart->address ? $cart->address->address : $addresses->first()->address }}</span> <br>
                 </div>
                 <div class="row my-3 m-0">
                     <button class="btn btn-outline-dark btn-large w-auto" data-bs-toggle="modal"
