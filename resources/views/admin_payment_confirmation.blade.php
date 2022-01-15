@@ -42,7 +42,7 @@
                                 </div>
                                 <hr>
                                 @foreach ($payments as $payment)
-                                    <div class="row mb-3">
+                                    <div class="row mb-3 align-items-center">
                                         <div class="col">
                                             <a
                                                 href="{{ route('admin_view_transaction', ['id' => $payment->order_id]) }}"><strong>{{ $payment->order_id }}</strong><br></a>
@@ -53,7 +53,7 @@
                                         <div class="col">Rp {{ $payment->amount }}</div>
                                         <div class="col">{{ $payment->transfer_date }}</div>
                                         <div class="col-md-2">
-                                            <div class="d-flex">
+                                            <div class="d-flex align-items-center">
                                                 <a href="{{ asset(isset($payment->evidence) ? 'storage/' . $payment->evidence : '') }}"
                                                     download class="btn"><i class="fa fa-download"></i></a>
 
@@ -63,7 +63,10 @@
                                                         @csrf
                                                         <button class="btn ms-3 btn-dark">Confirm</button>
                                                     </form>
+                                                @else
+                                                    <span class="m-0 p-0 h-100 text-muted">Confirmed</span>
                                                 @endif
+
                                             </div>
                                         </div>
                                     </div>
