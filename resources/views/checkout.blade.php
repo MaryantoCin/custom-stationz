@@ -13,7 +13,7 @@
                     <small>{{ $cart->address ? $cart->address->phone_number : $addresses->first()->phone_number }}</small>
                 </div>
                 <div class="row mt-2">
-                    <span>{{ $cart->address ? $cart->address->address : $addresses->first()->address }}</span> <br>
+                    <span class=" white-space-prewrap">{{ $cart->address ? $cart->address->address : $addresses->first()->address }}</span> <br>
                 </div>
                 <div class="row my-3 m-0">
                     <button class="btn btn-outline-dark btn-large w-auto" data-bs-toggle="modal"
@@ -40,12 +40,14 @@
                                 <img src="{{ $detail->mouse_variant->mouse->image }}" alt="" class="checkout-img">
                                 <div class="ms-3">
                                     <h6>{{ $detail->mouse_variant->mouse->name }}</h6>
-                                    <div class="muted-text">Color Spray | Color {{ $detail->spray_color }}<br>
-                                        {{ $detail->painted_logo ? '+1 Sticker' : '' }}<br>
-                                        {{ $detail->quantity }} pcs</div><br>
-                                    <h6>Rp
+                                    <div class="text-muted">Color Spray | Color {{ $detail->spray_color }}<br>
+                                        {{ $detail->painted_logo ? '+1 Sticker' : '' }}
+                                        {{ $detail->quantity }} pcs</div>
+                                    <div class="mt-2">
+                                        <h6>Rp
                                         {{ number_format($detail->mouse_variant->price * $detail->quantity, 2, ',', '.') }}
-                                    </h6>
+                                        </h6>
+                                    </div>
                                 </div>
                             </div>
                             @php
@@ -81,7 +83,7 @@
                         @csrf
                         <h5>Enter Promo Code</h5>
                         <div class="d-flex">
-                            <input type="text" class="w-100" name="promo" placeholder="Enter promo code"
+                            <input class=form-control type="text" class="w-100" name="promo" placeholder="Enter promo code"
                                 value="{{ $cart->discount ? $cart->discount->code : '' }}">
                             <button class="btn btn-outline-dark" type="submit">Apply</button>
                         </div>
@@ -202,7 +204,7 @@
                                     value="{{ $address->id }}" {{ $cart->address == $address ? 'checked' : '' }}>
                                 <label class="form-check-label" for="{{ $address->id }}">
                                     {{ $address->name }} - {{ $address->phone_number }} <br>
-                                    {{ $address->address }}</ </label>
+                                    <span class=" white-space-prewrap">{{ $address->address }}</span></ </label>
                             </div>
                         @endforeach
                     </div>
@@ -227,7 +229,7 @@
                     <div class="modal-body">
                         <h6>Bank Transfer (Manual Verification)</h6>
                         <hr class="m-0">
-                        <small class="muted-text">We will verify your payment max. 1x24 hours after you confirm the
+                        <small class="text-muted">We will verify your payment max. 1x24 hours after you confirm the
                             payment.Transfer payments to BCA, Mandiri, BNI, or BRI account numbers
                             which will be given after you finish shopping</small>
                         @foreach ($payment_methods as $method)
@@ -244,7 +246,7 @@
                         @endforeach
                         <h6 class="mt-5">Virtual Account</h6>
                         <hr class="m-0">
-                        <small class="muted-text">Transfer the payment to the virtual account number provided and the
+                        <small class="text-muted">Transfer the payment to the virtual account number provided and the
                             payment will be confirmed automatically.</small>
                         @foreach ($payment_methods as $method)
                             @if ($method->type == 'virtual')

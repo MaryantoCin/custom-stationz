@@ -9,10 +9,10 @@
                     <div class="col border p-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h6>All Products</h6>
-                            {{-- <button class="btn btn-dark col-md-3 w-auto" data-bs-toggle="modal"
-                                data-bs-target="#addProduct">Add New Product</button> --}}
+                            <button class="btn btn-dark col-md-3 w-auto" data-bs-toggle="modal"
+                                data-bs-target="#addProduct">Add New Product</button>
                         </div>
-                        {{-- <div class="mb-5">
+                        <div class="mb-5">
                             <div class="input-group rounded">
                                 <input type="search" class="form-control rounded" placeholder="Find your transaction"
                                     aria-label="Search" style="width: 400px;" aria-describedby="search-addon" />
@@ -20,7 +20,7 @@
                                     <i class="fa fa-search"></i>
                                 </span>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
@@ -104,6 +104,12 @@
                         </div>
                         <div class="row">
                             <div class="mb-4">
+                                <label for="productBrand" class="form-label">Product Brand</label>
+                                <input type="text" id="productBrand" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-4">
                                 <label for="productName" class="form-label">Product Name</label>
                                 <input type="text" id="productName" class="form-control" aria-describedby="nameHelpBlock">
                                 <div id="nameHelpBlock" class="form-text">
@@ -126,7 +132,7 @@
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <label class="form-label">Product's Color</label>
                                 <div>
-                                    <button class="btn btn-outline-dark">Add Color</button>
+                                    <button class="btn btn-outline-dark addColor">Add Color</button>
                                 </div>
                             </div>
                         </div>
@@ -199,6 +205,12 @@
                         </div>
                         <div class="row">
                             <div class="mb-4">
+                                <label for="productBrand" class="form-label">Product Brand</label>
+                                <input type="text" id="productBrand" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-4">
                                 <label for="productName" class="form-label">Product Name</label>
                                 <input type="text" id="productName" class="form-control"
                                     aria-describedby="nameHelpBlock">
@@ -223,7 +235,7 @@
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <label class="form-label">Product's Color</label>
                                 <div>
-                                    <button class="btn btn-outline-dark" id="addColor">Add Color</button>
+                                    <button class="btn btn-outline-dark addColor">Add Color</button>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +271,6 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-dark">Update Product</button>
-
                 </div>
             </div>
         </div>

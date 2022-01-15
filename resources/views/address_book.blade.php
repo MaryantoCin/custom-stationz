@@ -13,26 +13,28 @@
                                 Address</a>
                         </div>
                         @foreach ($addresses as $address)
-                            <div class="address-card p-3 mb-3">
-                                <h6>{{ $address->name }} <span class="badge bg-dark">Main</span></h6>
-                                <small class="muted-text">{{ $address->phone_number }}</small><br><br>
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <small>
-                                            {{ $address->address }}
-                                        </small>
+                            <div class="address-card p-3 mb-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6>{{ $address->name }} <span class="badge bg-dark">Main</span></h6>
+                                    <div class="mb-3">
+                                        <small class="text-muted">{{ $address->phone_number }}</small><br>
                                     </div>
-                                    <div class="d-inline me-3">
-                                        <a class="btn btn-link text-dark"
-                                            href="{{ route('edit_address', $address) }}">Edit</a>
+                                <small class="white-space-prewrap">{{ $address->address }}</small>
+                                </div>
+                                <div class="d-flex me-3 justify-content-between align-items-center">
+                                        <form action="{{ route('edit_address', $address) }}">
+                                            <button class="btn btn-outline-secondary">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                        </form>
                                         <form action="{{ route('delete_address', $address) }}" method="post">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit"><img src="{{ asset('asset/delete_24px.png') }}" alt=""
-                                                    class="icon-16"></button>
+                                            <button class="btn btn-outline-danger ms-2" type="submit">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </form>
 
-                                    </div>
                                 </div>
                             </div>
                         @endforeach

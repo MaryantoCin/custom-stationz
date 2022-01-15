@@ -7,7 +7,7 @@
                 <div class="row">
                     <h4>Transaction List</h4>
                     <div class="col border p-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        {{-- <div class="d-flex justify-content-between align-items-center mb-3"> --}}
                             <h6>All Orders</h6>
                         </div>
                         {{-- <div class="mb-5">
@@ -52,9 +52,7 @@
                                     </div>
                                     <div class="col">
                                         <h6>Address</h6>
-                                        <small class="text-muted">
-                                            {{ $transaction->address->address }}
-                                        </small>
+                                        <small class="text-muted white-space-prewrap">{{ $transaction->address->address }}</small>
                                     </div>
                                     <div class="col ">
                                         <div class="row mb-3">
@@ -64,7 +62,7 @@
                                         <div class="row">
                                             <h6>Receipt Number</h6>
                                             <small
-                                                class="text-muted">{{ $transaction->address->phone_number }}</small>
+                                                class="text-muted white-space-prewrap">{{ $transaction->address->phone_number }}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +99,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h5><span class="badge bg-dark">{{ $transaction->status }}</span></h5>
+                        <div class="d-flex justify-content-between">
+                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                <label class="btn btn-outline-dark btn-sm" for="btnradio1">{{ $transaction->status }}</label>
+                              
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-dark btn-sm" for="btnradio2">Completed</label> 
+                              </div>
+                            <div>
+                                <button class="btn btn-primary btn-sm">Update Status</button>
+                            </div>
+                        </div>
+                        <h5><span class="badge bg-dark"></span></h5>
                         <div class="row">
                             <small class="text-muted col-3">Transaction ID</small>
                             <small class="text-dark col">{{ $transaction->id }}</small>
@@ -162,8 +172,7 @@
                                     <small class="text-muted col">Address</small>
                                     <small class="text-dark col">{{ $transaction->address->name }}<br>
                                         {{ $transaction->address->phone_number }}<br>
-                                        {{ $transaction->address->address }}
-                                    </small>
+                                        <span class=" white-space-prewrap">{{ $transaction->address->address }}</span></small>
                                 </div>
                             </div>
                             <div class="col">
