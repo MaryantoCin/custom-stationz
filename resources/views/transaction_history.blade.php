@@ -140,7 +140,7 @@
                                     <small class="text-muted col">Address</small>
                                     <small class="text-dark col">{{ $transaction->address->name }}<br>
                                         {{ $transaction->address->phone_number }}<br>
-                                        {{ $transaction->address->address }}
+                                        <span class=" white-space-prewrap">{{ $transaction->address->address }}</span>
                                     </small>
                                 </div>
                             </div>

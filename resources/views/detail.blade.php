@@ -71,9 +71,7 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="disabledSelect" class="form-label">Color</label>
-                        <select id="disabledSelect" class="form-select" disabled>
-                            <option selected>{{ $detail->color }}</option>
-                        </select>
+                        <input type="text" class="form-control" disabled value={{ $detail->color }}>
                     </div>
                 </div>
                 <hr>

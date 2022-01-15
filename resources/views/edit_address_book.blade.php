@@ -22,13 +22,13 @@
                         </div>
                         <div class="modal-body bg-light">
                             <label for="address" class="form-label">New Address</label>
-                            <input type="text" class="form-control" id="address" name="address"
-                                placeholder="Complete Address" value="{{ $address->address }}">
+                            <textarea class="form-control" id="address" name="address" style="height: 100px"
+                                placeholder="Complete Address"></textarea>
                         </div>
                         <div class="modal-footer">
                             <a href="{{ route('view_address_book') }}" type="button" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Close</a>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-dark">Update Address</button>
                         </div>
                     </div>
                 </div>

@@ -16,27 +16,32 @@
                 @endphp
                 @if ($cart)
                     @foreach ($cart->order_details as $detail)
-                        <div class="row mb-3">
+                        <div class="row mb-2 rounded align-items-center bg-light py-2">
                             <div class="col-md-4">
-                                <img class="product-img mb-3" src="{{ $detail->mouse_variant->mouse->image }}" alt="">
-                                <br>
-                                <strong>{{ $detail->mouse_variant->mouse->name }}</strong><br>
-                                <small class="muted-text">Color Spray | Color: {{ $detail->spray_color }}</small><br>
-                                <small class="muted-text">{{ $detail->painted_logo ? '+1 Sticker' : '' }}</small>
+                                <div class="d-flex align-items-center">
+                                    <img class="payment-img" src="{{ $detail->mouse_variant->mouse->image }}" alt="">
+                                    <div class="ms-2">
+                                        <strong>{{ $detail->mouse_variant->mouse->name }}</strong><br>
+                                        <small class="muted-text">Color Spray | Color: {{ $detail->spray_color }}</small><br>
+                                        <small class="muted-text">{{ $detail->painted_logo ? '+1 Sticker' : '' }}</small>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col">Rp {{ number_format($detail->mouse_variant->price, 2, ',', '.') }}
                             </div>
                             <div class="col">
-                                <form action="{{ route('increase_quantity', $detail) }}" method="post">
-                                    @csrf
-                                    <button type="submit">+</button>
-                                </form>
-                                <input type="number" class="form-control" aria-label="Username"
-                                    aria-describedby="basic-addon1" value="{{ $detail->quantity }}" disabled>
-                                <form action="{{ route('decrease_quantity', $detail) }}" method="post">
-                                    @csrf
-                                    <button type="submit">-</button>
-                                </form>
+                                <div class="d-flex w-100 align-items-center">
+                                    <form action="{{ route('decrease_quantity', $detail) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-sm w-100" type="submit"><i class="class fa fa-minus"></i></button>
+                                    </form>
+                                    <input type="number" class="form-control" aria-label="Username" style="width: 30%"
+                                    value="{{ $detail->quantity }}" disabled>
+                                    <form action="{{ route('increase_quantity', $detail) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-sm w-100" type="submit"><i class="fa fa-plus"></i></button>
+                                    </form>
+                                </div>
                             </div>
                             <div class="col">Rp
                                 {{ number_format($detail->mouse_variant->price * $detail->quantity, 2, ',', '.') }}</div>

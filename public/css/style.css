@@ -1,3 +1,7 @@
+
+.white-space-prewrap{
+    white-space: pre-wrap;
+}
 td {
     padding-right: 3rem;
 }

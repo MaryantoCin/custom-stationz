@@ -1,5 +1,6 @@
 let qty = 1;
-$("#addColor").on('click', function () {
+console.log("hello")
+$(".addColor").on('click', function () {
     parentCol = $('.color-row').parent()
     elem = $('.color-row').last().clone(true)
     $(elem).appendTo(parentCol);
@@ -10,11 +11,10 @@ $("#addColor").on('click', function () {
         $("#input"+i).attr("id","input"+((qty*3)+i));
     });
     qty+=1;
+    console.log("click")
 });
 
 $(".specialTrash").on('click', function () {
     $(this).closest(".color-row").remove();
     qty-=1;
-
-
 });
