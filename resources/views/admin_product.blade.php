@@ -188,61 +188,45 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="mb-4">
-                                <label for="photo" class="form-label">Product Photo</label>
-                                <input type="file" class="form-control" id="photo" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-4">
-                                <label for="productBrand" class="form-label">Product Brand</label>
-                                <input type="text" id="productBrand" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-4">
-                                <label for="productName" class="form-label">Product Name</label>
-                                <input type="text" id="productName" class="form-control"
-                                    aria-describedby="nameHelpBlock">
-                                <div id="nameHelpBlock" class="form-text">
-                                    Include min. 40 characters to make it more attractive and easy for buyers to find,
-                                    consisting of product type, brand, and information such as color, material, or type.
+    <form action="{{ route('add_mouse') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="mb-4">
+                                    <label for="photo" class="form-label">Product Photo</label>
+                                    <input type="file" class="form-control" id="photo" name="image" required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-4">
-                                <label for="productDesc" class="form-label">Product Description</label>
-                                <input type="text" id="productDesc" class="form-control"
-                                    aria-describedby="nameHelpBlock">
-                                <div id="nameHelpBlock" class="form-text">
-                                    Include a complete description according to the product, such as excellence,
-                                    specifications, material, size, validity period, and others. The length of the
-                                    description is between 450-2000 characters. </div>
+                            <div class="row">
+                                <div class="mb-4">
+                                    <label for="productBrand" class="form-label">Product Brand</label>
+                                    <input type="text" id="productBrand" class="form-control" name="brand">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <label class="form-label">Product's Color</label>
-                                <div>
-                                    <button class="btn btn-outline-dark addColor">Add Color</button>
+                            <div class="row">
+                                <div class="mb-4">
+                                    <label for="productName" class="form-label">Product Name</label>
+                                    <input type="text" id="productName" class="form-control"
+                                        aria-describedby="nameHelpBlock" name="name">
+                                    <div id="nameHelpBlock" class="form-text">
+                                        Include min. 40 characters to make it more attractive and easy for buyers to find,
+                                        consisting of product type, brand, and information such as color, material, or type.
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-4">
                                     <label for="productDesc" class="form-label">Product Description</label>
                                     <input type="text" id="productDesc" class="form-control"
-                                        aria-describedby="nameHelpBlock">
+                                        aria-describedby="nameHelpBlock" name="description">
                                     <div id="nameHelpBlock" class="form-text">
                                         Include a complete description according to the product, such as excellence,
                                         specifications, material, size, validity period, and others. The length of the
@@ -253,7 +237,7 @@
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <label class="form-label">Product's Color</label>
                                     <div>
-                                        <button class="btn btn-outline-dark" id="addColor">Add Color</button>
+                                        <button type="button" class="btn btn-outline-dark addColor">Add Color</button>
                                     </div>
                                 </div>
                             </div>
@@ -266,13 +250,13 @@
                             <hr class="m-0">
                             <div class="row mb-3 mt-3 color-row">
                                 <div class="col">
-                                    <input id="input1" type="text" class=form-control value="Color">
+                                    <input id="input1" name="variant[1]" type="text" class=form-control value="Color">
                                 </div>
                                 <div class="col">
-                                    <input id="input2" type="number" class="form-control" value="0">
+                                    <input id="input2" name="variant[2]" type="number" class="form-control" value="0">
                                 </div>
                                 <div class="col">
-                                    <input id="input3" type="number" class="form-control" value="0">
+                                    <input id="input3" name="variant[3]" type="number" class="form-control" value="0">
                                 </div>
                                 <div class="col">
                                     <div class="d-flex align-items-center">
@@ -292,11 +276,7 @@
                         <button class="btn btn-dark">Update Product</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-dark">Update Product</button>
-                </div>
             </div>
         </div>
-        </form>
-    @endsection
+    </form>
+@endsection

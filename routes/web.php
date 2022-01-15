@@ -56,4 +56,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/transaction', [AdminController::class, 'admin_view_transaction'])->name('admin_view_transaction');
     Route::get('/admin/payment', [AdminController::class, 'admin_view_payment'])->name('admin_view_payment');
     Route::post('/admin/payment/{payment}', [AdminController::class, 'admin_confirm_payment'])->name('admin_confirm_payment');
+    Route::post('/admin/product/add', [AdminController::class, 'add_mouse'])->name('add_mouse');
+    Route::get('/admin/product/{mouse}', [AdminController::class, 'edit_mouse'])->name('edit_mouse');
+    Route::patch('/admin/product/{mouse}', [AdminController::class, 'update_mouse'])->name('update_mouse');
+    Route::post('/admin/variant/{mouse}', [AdminController::class, 'add_mouse_variant'])->name('add_mouse_variant');
+    Route::patch('/admin/variant/{mouse_variant}', [AdminController::class, 'update_mouse_variant'])->name('update_mouse_variant');
+    Route::delete('/admin/variant/{mouse_variant}', [AdminController::class, 'delete_mouse_variant'])->name('delete_mouse_variant');
 });

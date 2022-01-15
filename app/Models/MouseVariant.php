@@ -9,6 +9,8 @@ class MouseVariant extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function mouse()
     {
         return $this->belongsTo(Mouse::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mouse;
+use App\Models\MouseVariant;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
@@ -57,6 +58,7 @@ class AdminController extends Controller
             'name' => ['required'],
             'brand' => ['required'],
             'description' => ['required'],
+            'variant' => ['required'],
         ]);
 
         $file = $request->file('image');
@@ -66,13 +68,73 @@ class AdminController extends Controller
             $file->storeAs('public', $filename);
         }
 
-        Mouse::create([
+        $mouse = Mouse::create([
             'image' => $filename,
             'name' => $request->name,
             'brand' => $request->brand,
             'description' => $request->description,
         ]);
 
+        $variants = $request->variant;
+        $total_variants = count($variants) / 3;
+
+        for ($i = 0; $i < $total_variants; $i++) {
+            MouseVariant::create([
+                'mouse_id' => $mouse->id,
+                'color' => $variants[$i * 3 + 1],
+                'price' => $variants[$i * 3 + 2],
+                'stock' => $variants[$i * 3 + 3],
+            ]);
+        }
+
         return Redirect::route('admin_view_product');
+    }
+
+    public function edit_mouse(Mouse $mouse)
+    {
+        return view('admin_product_detail', ['mouse' => $mouse]);
+    }
+
+    public function update_mouse(Request $request, Mouse $mouse)
+    {
+        $file = $request->file('image');
+        if ($file) {
+            $filename = time() . "_" . $file->getClientOriginalName();
+            $file->storeAs('public', $filename);
+            $mouse->update([
+                'image' => $filename,
+            ]);
+        }
+
+        $mouse->update([
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'description' => $request->description,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function add_mouse_variant(Request $request, Mouse $mouse)
+    {
+        MouseVariant::create([
+            'mouse_id' => $mouse->id,
+            'color' => $request->color,
+            'price' => $request->price,
+            'stock' => $request->stock,
+        ]);
+        return Redirect::back();
+    }
+
+    public function update_mouse_variant(Request $request, MouseVariant $mouseVariant)
+    {
+        $mouseVariant->update($request->all());
+        return Redirect::back();
+    }
+
+    public function delete_mouse_variant(MouseVariant $mouseVariant)
+    {
+        MouseVariant::destroy($mouseVariant->id);
+        return Redirect::back();
     }
 }
