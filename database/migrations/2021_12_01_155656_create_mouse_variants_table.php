@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomPackagesTable extends Migration
+class CreateMouseVariantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateCustomPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('custom_packages', function (Blueprint $table) {
+        Schema::create('mouse_variants', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('mouse_id');
+            $table->foreign('mouse_id')->references('id')->on('mice')->onDelete('cascade');
+            $table->integer('stock');
+            $table->string('color');
             $table->integer('price');
-            $table->string('image');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateCustomPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('custom_packages');
+        Schema::dropIfExists('mouse_variants');
     }
 }

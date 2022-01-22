@@ -16,11 +16,8 @@ class CreateMiceTable extends Migration
         Schema::create('mice', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('merk');
-            $table->string('color');
-            $table->integer('price');
+            $table->string('brand');
             $table->string('image')->nullable();
-            $table->integer('stock');
             $table->longText('description');
             $table->timestamps();
         });

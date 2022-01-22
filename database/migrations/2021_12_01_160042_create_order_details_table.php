@@ -16,13 +16,12 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->unsignedBigInteger('mouse_id');
-            $table->foreign('mouse_id')->references('id')->on('mice');
-            $table->unsignedBigInteger('custom_package_id');
-            $table->foreign('custom_package_id')->references('id')->on('custom_packages');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('mouse_variant_id');
+            $table->foreign('mouse_variant_id')->references('id')->on('mouse_variants')->onDelete('cascade');
             $table->integer('quantity');
-            $table->integer('price_each');
+            $table->string('spray_color')->nullable();
+            $table->string('painted_logo')->nullable();
             $table->timestamps();
         });
     }
